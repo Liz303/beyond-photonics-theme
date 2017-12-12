@@ -1,0 +1,350 @@
+@import './vars.scss';
+@import './_flexbox.scss';
+@import url("font-awesome.min.css");
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,600,600italic");
+
+html, body {
+  font-family: 'OpenSans', 'Helvetica', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.5em;
+  color: $gray;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  background: $white;
+  overflow-x: hidden;
+}
+
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * Vendor-prefixed and regular ::selection selectors cannot be combined:
+ * https://stackoverflow.com/a/16982510/7133471
+ *
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+/* ==========================================================================
+   Browser Upgrade Prompt
+   ========================================================================== */
+
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Custom Styles
+   ========================================================================== */
+
+button {
+  padding: 10px 15px;
+  margin: 10px 0;
+  border-radius: 0;
+  transition: all 0.5s linear;
+  font-size: 1em;
+  font-weight: 600;
+  &:hover {
+    cursor: pointer;
+  }
+  &.btn-transparent {
+    border: 2px solid $white;
+    background: $white-invisible;
+    color: $white;
+    &:hover {
+      background: $white;
+      color: $gray;
+    }
+  }
+  &.btn-red {
+    background: $red-invisible;
+    border: 2px solid $red;
+    color: $red;
+    &:hover {
+      background: $red;
+      color: $white;
+    }
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.5s linear;
+  &:hover {
+    color: $red;
+  }
+}
+
+h1 {
+	font-size: 2em;
+	line-height: 1.2em;
+	padding-bottom: 15px;
+	margin-bottom: 0;
+	text-transform: capitalize;
+  color: $white;
+  font-weight: 600;
+}
+
+// Navigation
+.header {
+	@include justify-content(space-between);
+  @include align-content(flex-end);
+  padding: 10px 30px;
+  #logo {
+    max-width: 150px;
+    position: relative;
+    display: inline-block;
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+	#nav {
+    font-size: 15px;
+    ul {
+      list-style: none;
+      li {
+        display: inline-block;
+        padding: 0 10px 0 0;
+        &:first-child {
+          padding-left: 0;
+        }
+        &.current_page_item a{
+          padding-bottom: 5px;
+          color: $red;
+          border-bottom: 1px solid $red;
+        }
+      }
+    }
+	}
+}
+
+// Page Banner
+.main-content-wrap {
+  .header-image {
+    position: relative;
+    height: 300px;
+    width: 100%;
+    color: $white;
+    .content-container {
+      position: absolute;
+      max-width: 600px;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      z-index: 300;
+      @include justify-content(flex-start);
+      @include align-content(center);
+      padding: 0 30px;
+      .copy {
+        @include align-self(flex-start);
+      }
+    }
+    .image-overlay {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      background: $purple-transparent;
+      z-index: 200;
+    }
+    .image {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      background-position: -10%, 0;
+      z-index: 100;
+    }
+  }
+}
+
+// Sections
+section {
+  display: block;
+  max-width: 100%;
+  padding: 60px 30px;
+  color: $gray;
+  position: relative;
+  h1 {
+    color: $gray;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  .intro-copy {
+    max-width: 600px;
+  }
+  .image-row-wrap {
+    padding: 15px 0px;
+    @include align-items(flex-start);
+    .one-fourth {
+      .sub-page-link {
+        transition: all 0.5s linear;
+        padding: 10px;
+        position: relative;
+        width: 100%;
+      }
+      &:first-child {
+        .sub-page-link {
+          padding-left: 0;
+        }
+      }
+      &:last-child {
+        .sub-page-link {
+          padding-right: 0;
+        }
+      }
+      &:hover {
+        color: $red;
+        .image-container {
+          border: 2px solid $red;
+          .image-overlay {
+            background: $gray-transparent;
+          }
+        }
+      }
+    }
+  }
+  .image-container {
+    border: 2px solid $gray;
+    min-width: 150px;
+    min-height: 150px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    img {
+      transition: all 0.5s linear;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+    .image-overlay {
+      background: $gray-invisible;
+      transition: all 0.5s linear;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+    }
+  }
+  .caption {
+    padding-top: 10px;
+    font-size: 0.9em;
+  }
+
+  &#capabilities {
+    background: $light-gray;
+    h1 {
+      color: $red;
+    }
+  }
+  .image-slider {
+    overflow-x: scroll;
+    padding: 15px 0;
+    .image-slider-container {
+      width: 300000px;
+      @include justify-content(flex-start);
+      .slider-item {
+        width: 30vw;
+        min-width: 120px;
+        max-width: 300px;
+        padding: 10px;
+        &:first-child {
+          padding-left: 0;
+        }
+        &:hover {
+          color: $red;
+          cursor: pointer;
+          .image-container {
+            border: 2px solid $red;
+            .image-overlay {
+              background: $gray-transparent;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+
+
+// Footer
+.footer {
+  @include justify-content(space-between);
+  padding: 15px 30px 15px 30px;
+  background: $gray;
+  color: $white;
+  position: relative;
+  width: 100%;
+  .flex-wrapper {
+    padding: 15px 0;
+    &.copyright {
+      padding-bottom: 0;
+      font-size: 0.8em;
+    }
+    .row {
+      width: 100%;
+    }
+  }
+}

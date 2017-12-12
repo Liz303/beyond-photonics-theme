@@ -1,0 +1,121 @@
+@import "./mixins/flex";
+
+.flex-wrapper-column {
+  @include flexbox;
+  @include flex-direction(column);
+  @include justify-content(center);
+  @include align-items(center);
+}
+.flex-wrapper {
+  padding: 0;
+  margin: 0;
+  @include flexbox;
+  @include flex-flow(row wrap);
+  @include justify-content(center);
+  @include align-items(center);
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  &.flex-end {
+    @include align-content(flex-end);
+    @include align-items(flex-end);
+  }
+  &.flex-start {
+    @include align-content(flex-start);
+    @include align-items(flex-start);
+  }
+  &.justify-start {
+    @include justify-content(flex-start);
+  }
+  &.justify-end {
+    @include justify-content(flex-end);
+  }
+  &.justify-center {
+    @include justify-content(center);
+  }
+  .full {
+    width: 100%;
+    position: relative;
+  }
+  .column {
+    @include flex-flow(column);
+  }
+  .align-start {
+    @include align-self(flex-start);
+  }
+  .one-half {
+    flex: 2 1;
+    position: relative;
+    width: 50%;
+    min-width: 307px;
+    @include align-items(center);
+    &.center {
+      @include justify-content(center);
+      @include align-items(center);
+      text-align: center;
+    }
+    &.flex-end {
+      @include justify-content(flex-end);
+    }
+    &.flex-start {
+      @include align-content(flex-start);
+      @include align-items(flex-start);
+    }
+    &.justify-start {
+      @include justify-content(flex-start);
+    }
+  }
+  &.center, .center {
+    @include justify-content(center);
+    @include align-items(center);
+  }
+  .one-third {
+    width: calc(33.333% - 30px);
+    min-width: 214px;
+    position: relative;
+  }
+  .one-third-flex {
+    flex: 3 1;
+    width: calc(33.333% - 30px);
+    min-width: 214px;
+  }
+  .one-fourth {
+    width: 25%;
+    min-width: 200px;
+  }
+  .two-thirds {
+    width: calc(66.666% - 30px);
+    min-width: 400px;
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+  .two-thirds-flex {
+    flex: 2 1;
+    width: calc(66.666% - 30px);
+    min-width: 400px;
+  }
+  .full {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 736px)  {
+  .flexbox, .section {
+    .one-half {
+      width: 100%;
+      min-width: 200px;
+    }
+    .one-third {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+    .one-third-flex {
+      margin-bottom: 30px;
+    }
+    .two-thirds {
+      width: 100%;
+      min-width: 300px;
+    }
+  }
+}
