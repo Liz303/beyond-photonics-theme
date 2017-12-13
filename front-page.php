@@ -35,46 +35,15 @@ get_header();
       <?php echo get_theme_mod( 'homepage_section_one_intro_copy'); ?>
     </div>
     <div class="flex-wrapper image-row-wrap">
-      <div class="one-fourth chemical-sensing flex-wrapper">
-        <a href="#" class="sub-page-link">
-          <div class="image-container">
-            <div class="image-overlay"></div>
-            <img src="<?php echo get_theme_mod( 'section_one_chemical_sensing_image' ) ?>"/>
-          </div>
-          <div class="caption"> Chemical Sensing </div>
-        </a>
-      </div>
-
-      <div class="one-fourth wind-sensing flex-wrapper">
-        <a href="#" class="sub-page-link">
-          <div class="image-container">
-            <div class="image-overlay"></div>
-            <img src="<?php echo get_theme_mod( 'section_one_chemical_sensing_image' ) ?>"/>
-          </div>
-          <div class="caption"> Wind Sensing </div>
-        </a>
-      </div>
-
-      <div class="one-fourth hard-target-tracking flex-wrapper">
-        <a href="#" class="sub-page-link">
-          <div class="image-container">
-            <div class="image-overlay"></div>
-            <img src="<?php echo get_theme_mod( 'section_one_chemical_sensing_image' ) ?>"/>
-          </div>
-          <div class="caption"> Hard-Target Tracking, Ranging and Imaging </div>
-        </a>
-      </div>
-
-      <div class="one-fourth remote-vibrometry flex-wrapper">
-        <a href="#" class="sub-page-link">
-          <div class="image-container">
-            <div class="image-overlay"></div>
-            <img src="<?php echo get_theme_mod( 'section_one_chemical_sensing_image' ) ?>"/>
-          </div>
-          <div class="caption"> Remote Vibrometry </div>
-        </a>
-      </div>
-
+      <?php
+        $args = array(
+          'category_name' => 'applications',
+        );
+        $q = new WP_Query( $args);
+          if ($q->have_posts()) : while ($q->have_posts()) : $q->the_post(); ?>
+          <?php  get_template_part( 'applications_section' ); ?>
+        <?php  endwhile; endif;
+      ?>
     </div>
   </section>
 

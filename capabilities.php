@@ -7,17 +7,17 @@
 
 <div className="main-content-wrap">
   <h1> Capabilities Page </h1>
-  <?php
-    $args = array (
-        'cat' => array(1)
-    );
 
-    $cat_posts = new WP_query($args);
-
-    if ($cat_posts->have_posts()) : while ($cat_posts->have_posts()) : $cat_posts->the_post();
+<?php
+  $args = array(
+    'category_name' => 'capabilities',
+  );
+  $q = new WP_Query( $args);
+    if ($q->have_posts()) : while ($q->have_posts()) : $q->the_post();
             get_template_part( 'content', 'page' );
     endwhile; endif;
-	?>
+?>
+
 </div>
 
 <?php get_footer(); ?>
