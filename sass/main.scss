@@ -170,6 +170,7 @@ h1 {
 
 // Page Banner
 .main-content-wrap {
+  max-width: 1600px;
   .header-image {
     position: relative;
     height: 300px;
@@ -235,29 +236,20 @@ section {
     padding: 15px 0px;
     @include align-items(flex-start);
     .one-fourth {
-      .sub-page-link {
+      .content-container {
         transition: all 0.5s linear;
         padding: 10px;
         position: relative;
         width: 100%;
       }
       &:first-child {
-        .sub-page-link {
+        .content-container,  {
           padding-left: 0;
         }
       }
       &:last-child {
-        .sub-page-link {
+        .content-container {
           padding-right: 0;
-        }
-      }
-      &:hover {
-        color: $red;
-        .image-container {
-          border: 2px solid $red;
-          .image-overlay {
-            background: $gray-transparent;
-          }
         }
       }
     }
@@ -268,12 +260,13 @@ section {
     min-height: 150px;
     width: 100%;
     height: 100%;
+    overflow: hidden;
     position: relative;
     img {
       transition: all 0.5s linear;
       position: absolute;
       width: 100%;
-      height: 100%;
+      height: auto;
       z-index: 1;
     }
     .image-overlay {
@@ -298,17 +291,103 @@ section {
       color: $red;
     }
   }
-  .image-slider {
-    overflow-x: scroll;
-    padding: 15px 0;
-    .image-slider-container {
-      width: 300000px;
-      @include justify-content(flex-start);
+}
+
+#lightslider {
+  padding: 15px 0;
+  &.capabilities-slider {
+
+  }
+}
+
+
+.lSAction>a {
+  top: 80px;
+  background:none;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: 40px;
+  color: $white;
+  font-weight: 600;
+  transition: color 1s linear;
+  &:hover {
+    color: $red;
+  }
+}
+
+.lSAction>.lSNext {
+  right: 0px;
+  &:before {
+    content: "\f105";
+  }
+}
+
+.lSAction>.lSPrev {
+  &:before {
+    content: "\f104";
+  }
+}
+
+.lslide {
+  .image-container {
+    width: auto;
+  }
+}
+
+// Image slider
+.image-slide-wrapper {
+  height: 250px;
+  position: relative;
+  width: 100%;
+  padding: 15px 0;
+  .slider-container {
+    overflow: hidden;
+    width: 100%;
+    height: 250px;
+    display: inline-block;
+    position: absolute;
+    .arrows {
+      width: 50px;
+      position: absolute;
+      height: 150px;
+      z-index: 200;
+      transition: all 0.5s linear;
+      @include justify-content(center);
+      @include align-items(center);
+      i {
+        font-size: 50px;
+        color: $white;
+        transition: all 0.5s linear;
+      }
+      &:hover {
+        cursor: pointer;
+        i {
+          color: $red;
+        }
+      }
+      &.slide-left {
+        left: 0;
+      }
+      &.slide-right {
+        right: 0;
+      }
+    }
+    .images {
+      width: 10000000px;
+      height: 150px;
+      display: inline-block;
+      position: absolute;
+      transition: all .5s linear;
       .slider-item {
+        float: left;
+        display: inline-block;
+        margin-right: 15px;
+        position: relative;
         width: 30vw;
-        min-width: 120px;
         max-width: 300px;
-        padding: 10px;
+        height: 100%;
+        &:last-child {
+          margin-right: 0;
+        }
         &:first-child {
           padding-left: 0;
         }
@@ -325,7 +404,6 @@ section {
       }
     }
   }
-
 }
 
 

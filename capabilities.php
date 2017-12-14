@@ -14,7 +14,7 @@
   );
   $q = new WP_Query( $args);
     if ($q->have_posts()) : while ($q->have_posts()) : $q->the_post();
-            get_template_part( 'content', 'page' );
+      get_template_part( 'content', 'page' );
     endwhile; endif;
 ?>
 

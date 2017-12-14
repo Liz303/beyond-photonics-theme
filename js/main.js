@@ -1,86 +1,72 @@
-/*
-	Arcana by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
+var Slider = {
+  init: function($, winWidth) {
+    var self = $(this);
 
-(function($) {
+    self.$arrows = $('.arrows');
+    $('.arrows').on('click', function() {
+      var arrow = $(this);
+      var slider = arrow.parents('.slider-container');
+      var imageContainer = slider.children('.images');
+      var images = imageContainer.children('.slider-item');
+      var numberOfImages = images.length;
+			var sliderWidth = winWidth < 1600 ? winWidth - 60 : 1600 - 60;
+			var visibleImagesInSlider = sliderWidth / ($(images[0]).width() + 15);
+      var left = 0;
+      var leftPos;
+			var firstVisible;
+			var indexOfActive;
 
-	skel.breakpoints({
-		wide: '(max-width: 1680px)',
-		normal: '(max-width: 1280px)',
-		narrow: '(max-width: 980px)',
-		narrower: '(max-width: 840px)',
-		mobile: '(max-width: 736px)',
-		mobilep: '(max-width: 480px)'
-	});
+			debugger;
 
-	$(function() {
+			if ($(slider).find('.slider-item.first').length === 0) {
+				$(images[0]).addClass('first');
+			}
+			firstVisible = $(slider).find('.slider-item.first');
+			indexOfActive = $(firstVisible).data('key');
 
-		var	$window = $(window),
-			$body = $('body');
 
-		// Disable animations/transitions until the page has loaded.
-			$body.addClass('is-loading');
 
-			$window.on('load', function() {
-				$body.removeClass('is-loading');
-			});
 
-		// Fix: Placeholder polyfill.
-			$('form').placeholder();
+      // ARROW LEFT
+      if (arrow.data('key') === 'left' ) {
+        if (indexOfActive === 0) { return;
+        } else { indexOfNew = indexOfActive - 1; }
 
-		// Prioritize "important" elements on narrower.
-			skel.on('+narrower -narrower', function() {
-				$.prioritize(
-					'.important\\28 narrower\\29',
-					skel.breakpoint('narrower').active
-				);
-			});
+      // ARROW RIGHT
+      } else {
+        if ((indexOfActive + 1) === numberOfImages) { return;
+        } else { indexOfNew = indexOfActive + 1; }
+      }
 
-		// Dropdowns.
-			$('#nav > ul').dropotron({
-				offsetY: -15,
-				hoverDelay: 0,
-				alignment: 'center'
-			});
+      if (indexOfNew === 0) { left = 0;
+      } else {
+        for ( var i=0; i < indexOfNew; i ++ ) {
+          left = left + $(images[i]).width() + 15;
+        }
+      }
 
-		// Off-Canvas Navigation.
+      $(images[indexOfActive]).removeClass('first');
+      $(images[indexOfNew]).addClass('first');
+      leftPos = -left + "px";
+      $(imageContainer).css('left', leftPos);
+    });
+  }
+};
 
-			// Title Bar.
-				$(
-					'<div id="titleBar">' +
-						'<a href="#navPanel" class="toggle"></a>' +
-						'<span class="title">' + $('#logo').html() + '</span>' +
-					'</div>'
-				)
-					.appendTo($body);
+// jQuery(document).ready(function($) {
+// 	var winWidth = $(window).width();
+//   $("#lightSlider").lightSlider();
+// });
 
-			// Navigation Panel.
-				$(
-					'<div id="navPanel">' +
-						'<nav>' +
-							$('#nav').navList() +
-						'</nav>' +
-					'</div>'
-				)
-					.appendTo($body)
-					.panel({
-						delay: 500,
-						hideOnClick: true,
-						hideOnSwipe: true,
-						resetScroll: true,
-						resetForms: true,
-						side: 'left',
-						target: $body,
-						visibleClass: 'navPanel-visible'
-					});
-
-			// Fix: Remove navPanel transitions on WP<10 (poor/buggy performance).
-				if (skel.vars.os == 'wp' && skel.vars.osVersion < 10)
-					$('#titleBar, #navPanel, #page-wrapper')
-						.css('transition', 'none');
-
-	});
-
-})(jQuery);
+jQuery(document).ready(function($) {
+  $('#lightslider').lightSlider({
+    cssEasing: 'ease', //'cubic-bezier(0.25, 0, 0.25, 1)',//
+    easing: 'linear', //'for jquery animation',////
+    speed: 400, //ms'
+    auto: false,
+    keyPress: true,
+    controls: true,
+    slideMargin: 15,
+    pager: false
+  });
+ });

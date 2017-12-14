@@ -1,9 +1,12 @@
 <?php
   // Add scripts and stylesheets
   function beyondphotonics_scripts() {
-    wp_enqueue_style( 'fontawesome', get_template_directory_uri() . '/css/main.css' );
+    wp_enqueue_style( 'lightslider', get_template_directory_uri() . '/css/lightslider.min.css' );
+    wp_enqueue_style( 'fontawesome', get_template_directory_uri() . '/css/main.css', array('lightslider') );
   	wp_enqueue_style( 'main-style', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' );
-  	wp_enqueue_script( 'jquery', get_template_directory_uri() . '/js/jquery.min.js');
+    wp_enqueue_script( 'lightslider', get_template_directory_uri() . '/js/lightslider.min.js', array( 'jquery'));
+    wp_enqueue_script( 'main', get_template_directory_uri() . '/js/main.js', array( 'lightslider'));
+
     wp_enqueue_script( 'theme-customization', get_template_directory_uri() . '/js/theme-customization.js');
   }
 
@@ -173,22 +176,6 @@
       'settings' => 'homepage_section_one_intro_copy'
     ));
 
-    // HOMEPAGE Section 1 chemical sensing image
-    $wp_customize->add_setting( 'section_one_chemical_sensing_image',
-      array(
-        'transport' => 'postMessage'
-      )
-    );
-    $wp_customize->add_control( new WP_Customize_Image_Control(
-    $wp_customize,
-    'section_one_chemical_sensing_image_control',
-      array(
-        'label'    => __( 'Upload an image for chemical sensing', 'beyondphotonics' ),
-        'section'  => 'beyondphotonics_homepage_options',
-        'settings' => 'section_one_chemical_sensing_image',
-        'priority' => 60,
-      )
-    ));
 
 
     // HOMEPAGE Capabilities Intro Copy

@@ -52,49 +52,20 @@ get_header();
     <div class="intro-copy">
       <?php echo get_theme_mod( 'homepage_capabilities_intro_copy'); ?>
     </div>
-    <div class="image-slider section">
-      <div class="image-slider-container flex-wrapper">
-        <div class="slider-item">
-          <div class="image-container">
-            <div class="image-overlay"></div>
-            <img src="<?php echo get_theme_mod( 'section_one_chemical_sensing_image' ) ?>"/>
-          </div>
-          <div class="caption">
-            Trade Studies and Conceptual Design Appropriate to the Measurement Application
-          </div>
-        </div>
-
-        <div class="slider-item">
-          <div class="image-container">
-            <div class="image-overlay"></div>
-            <img src="<?php echo get_theme_mod( 'section_one_chemical_sensing_image' ) ?>"/>
-          </div>
-          <div class="caption">
-            Trade Studies and Conceptual Design Appropriate to the Measurement Application
-          </div>
-        </div>
-
-        <div class="slider-item">
-          <div class="image-container">
-            <div class="image-overlay"></div>
-            <img src="<?php echo get_theme_mod( 'section_one_chemical_sensing_image' ) ?>"/>
-          </div>
-          <div class="caption">
-            Trade Studies and Conceptual Design Appropriate to the Measurement Application
-          </div>
-        </div>
-
-        <div class="slider-item">
-          <div class="image-container">
-            <div class="image-overlay"></div>
-            <img src="<?php echo get_theme_mod( 'section_one_chemical_sensing_image' ) ?>"/>
-          </div>
-          <div class="caption">
-            Trade Studies and Conceptual Design Appropriate to the Measurement Application
-          </div>
-        </div>
-      </div>
-    </div>
+    <ul id="lightslider" class="capabilities-slider">
+      <?php
+        $args = array(
+          'category_name' => 'capabilities',
+        );
+        $q = new WP_Query( $args);
+        $i = 0;
+          if ($q->have_posts()) : while ($q->have_posts()) : $q->the_post(); ?>
+          <?php include( locate_template( 'capabilities_section.php', false, false ) )
+          ?>
+      <?php
+        $i++; endwhile; endif;
+      ?>
+    </ul>
     <div class="flex-wrapper justify-end">
       <a href="#">
         <button class="btn-red">

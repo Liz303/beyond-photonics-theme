@@ -32,12 +32,6 @@
  			 } );
  		} );
 
-		wp.customize( 'section_one_chemical_sensing_image', function( value ) {
-			 value.bind( function( newval ) {
-					$('#homepage').find('.section-one .chemial-sensing').src(newval);
-			 } );
-		} );
-
 		// Homepage Section 2
 		wp.customize( 'homepage_capabilities_intro_copy', function( value ) {
 			 value.bind( function( newval ) {
