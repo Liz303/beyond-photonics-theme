@@ -177,7 +177,6 @@
     ));
 
 
-
     // HOMEPAGE Capabilities Intro Copy
     $wp_customize->add_setting( 'homepage_capabilities_intro_copy', array(
       'capability' => 'edit_theme_options',
@@ -190,6 +189,80 @@
       'label' => __( 'Add intro copy for Capabilities Section', 'beyondphotonics' ),
       'priority' => 70,
       'settings' => 'homepage_capabilities_intro_copy'
+    ));
+
+    // HOMEPAGE Tools&Facilities Intro Copy
+    $wp_customize->add_setting( 'homepage_tools_and_facilities_intro_copy', array(
+      'capability' => 'edit_theme_options',
+      'default' => 'Lorem Ipsum Dolor Sit amet',
+      'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'homepage_tools_and_facilities_intro_copy_control', array(
+      'type' => 'textarea',
+      'section' => 'beyondphotonics_homepage_options', // // Add a default or your own section
+      'label' => __( 'Add intro copy for Tools & Facilities Section', 'beyondphotonics' ),
+      'priority' => 80,
+      'settings' => 'homepage_tools_and_facilities_intro_copy'
+    ));
+
+    // Tools & Facilities Image
+    $wp_customize->add_setting( 'tools_and_facilities_image',
+      array(
+        'transport' => 'postMessage'
+      )
+    );
+    $wp_customize->add_control( new WP_Customize_Image_Control(
+    $wp_customize,
+  	'tools_and_facilities_image_control',
+    	array(
+    		'label'    => __( 'Upload image for Tools&Facilities Section', 'beyondphotonics' ),
+    		'section'  => 'beyondphotonics_homepage_options',
+    		'settings' => 'tools_and_facilities_image',
+    		'priority' => 90,
+    	)
+    ));
+
+
+    // HOMEPAGE Swift Intro Copy
+    $wp_customize->add_setting( 'homepage_swift_intro_copy', array(
+      'capability' => 'edit_theme_options',
+      'default' => 'Lorem Ipsum Dolor Sit amet',
+      'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'homepage_swift_intro_copy_control', array(
+      'type' => 'textarea',
+      'section' => 'beyondphotonics_homepage_options', // // Add a default or your own section
+      'label' => __( 'Add intro copy for Swift', 'beyondphotonics' ),
+      'priority' => 100,
+      'settings' => 'homepage_swift_intro_copy'
+    ));
+
+    // HOMEPAGE Cool Card Intro Copy
+    $wp_customize->add_setting( 'homepage_cool_card_intro_copy', array(
+      'capability' => 'edit_theme_options',
+      'default' => 'Lorem Ipsum Dolor Sit amet',
+      'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'homepage_cool_card_intro_copy_control', array(
+      'type' => 'textarea',
+      'section' => 'beyondphotonics_homepage_options', // // Add a default or your own section
+      'label' => __( 'Add intro copy for Cool Card', 'beyondphotonics' ),
+      'priority' => 110,
+      'settings' => 'homepage_cool_card_intro_copy'
+    ));
+
+    // HOMEPAGE Leadership Intro Copy
+    $wp_customize->add_setting( 'homepage_leadership_intro_copy', array(
+      'capability' => 'edit_theme_options',
+      'default' => 'Lorem Ipsum Dolor Sit amet',
+      'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'homepage_leadership_intro_copy_control', array(
+      'type' => 'textarea',
+      'section' => 'beyondphotonics_homepage_options', // // Add a default or your own section
+      'label' => __( 'Add intro copy for Leadership Section', 'beyondphotonics' ),
+      'priority' => 110,
+      'settings' => 'homepage_leadership_intro_copy'
     ));
 
   }

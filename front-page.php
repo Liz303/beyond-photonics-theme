@@ -75,6 +75,46 @@ get_header();
     </div>
   </section>
 
+  <section class="section-three" id="tools-and-facilities">
+    <div class="flex-wrapper">
+      <div class="one-half flex-wrapper">
+        <h1> Tools & Facilities </h1>
+        <div class="intro-copy">
+          <?php echo get_theme_mod( 'homepage_capabilities_intro_copy'); ?>
+        </div>
+        <a href="#">
+          <button class="btn-red"> Learn More About Our Tools & Facilities</button>
+        </a>
+      </div>
+      <div class="image one-half" style="background-image: url('<?php echo get_theme_mod( 'tools_and_facilities_image') ?>')">
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section-four" id="products">
+    <h1> Products </h1>
+    <div class="flex-wrapper image-row-wrap">
+      <?php
+        $args = array(
+          'category_name' => 'products',
+        );
+        $q = new WP_Query( $args);
+          if ($q->have_posts()) : while ($q->have_posts()) : $q->the_post(); ?>
+          <?php get_template_part( 'products_section' ); ?>
+        <?php
+        endwhile; endif;
+      ?>
+    </div>
+  </section>
+
+  <section class="section-five" id="leadership">
+    <h1> Leadership Team </h1>
+    <div class="intro-copy">
+      <?php echo get_theme_mod( 'homepage_leadership_intro_copy'); ?>
+    </div>
+  </section>
+
 </div>
 
 <?php get_footer(); ?>

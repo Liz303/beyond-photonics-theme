@@ -39,4 +39,35 @@
 			 } );
 		} );
 
+		// Homepage Section 3 - Tools and Facilities
+		wp.customize( 'homepage_tools_and_facilities_intro_copy', function( value ) {
+			 value.bind( function( newval ) {
+					$('#homepage').find('.section-three .intro-copy').src(newval);
+			 } );
+		} );
+
+		wp.customize( 'tools_and_facilities_image', function( value ) {
+			 value.bind( function( newval ) {
+					$('#tools-and-facilities').find('.image').css('background-image', 'url(' + newval + ')');
+			 } );
+		} );
+
+		wp.customize( 'homepage_swift_intro_copy', function( value ) {
+			 value.bind( function( newval ) {
+					$('#products').find('.description.swift').html(newval);
+			 } );
+		} );
+
+		wp.customize( 'homepage_cool_card_intro_copy', function( value ) {
+			 value.bind( function( newval ) {
+					$('#products').find('.description.cool-card').html(newval);
+			 } );
+		} );
+
+		wp.customize( 'homepage_leadership_intro_copy', function( value ) {
+			 value.bind( function( newval ) {
+					$('#leadership').find('.intro-copy').html(newval);
+			 } );
+		} );
+
   } )( jQuery );

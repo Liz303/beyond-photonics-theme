@@ -399,6 +399,60 @@ section {
       padding-left: 0; }
     section .image-row-wrap .one-fourth:last-child .content-container {
       padding-right: 0; }
+  section#tools-and-facilities .flex-wrapper, section#products .flex-wrapper {
+    height: 40vh;
+    min-height: 200px;
+    max-height: 600px;
+    -webkit-align-items: stretch;
+    -moz-align-items: stretch;
+    -ms-align-items: stretch;
+    align-items: stretch;
+    -webkit-justify-content: flex-start;
+    -moz-justify-content: flex-start;
+    -ms-justify-content: flex-start;
+    justify-content: flex-start;
+    -ms-flex-pack: flex-start; }
+    section#tools-and-facilities .flex-wrapper .one-half.image, section#tools-and-facilities .flex-wrapper .one-half .image, section#products .flex-wrapper .one-half.image, section#products .flex-wrapper .one-half .image {
+      margin: 0 0 0 30px;
+      transition: all 0.5s linear;
+      width: 100%;
+      height: 100%;
+      min-height: 100px;
+      background-repeat: no-repeat;
+      background-position: center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover; }
+    section#tools-and-facilities .flex-wrapper .one-half a, section#products .flex-wrapper .one-half a {
+      -webkit-align-self: flex-end;
+      -moz-align-self: flex-end;
+      -ms-align-self: flex-end;
+      align-self: flex-end; }
+  section#products .flex-wrapper {
+    height: auto;
+    max-height: 10000px;
+    -webkit-align-items: flex-start;
+    -moz-align-items: flex-start;
+    -ms-align-items: flex-start;
+    align-items: flex-start; }
+    section#products .flex-wrapper .one-half .content-container {
+      width: 100%; }
+      section#products .flex-wrapper .one-half .content-container .image {
+        min-height: 100px;
+        height: 40vh;
+        max-height: 300px; }
+      section#products .flex-wrapper .one-half .content-container a {
+        float: right;
+        padding-top: 20px; }
+    section#products .flex-wrapper .one-half:first-child .content-container {
+      margin-right: 15px; }
+    section#products .flex-wrapper .one-half:last-child {
+      margin-left: 15px; }
+      section#products .flex-wrapper .one-half:last-child .content-container {
+        margin-right: 15px; }
+    section#products .flex-wrapper .one-half .image {
+      margin-left: 0; }
   section .image-container {
     border: 2px solid #404041;
     min-width: 150px;
@@ -407,12 +461,18 @@ section {
     height: 100%;
     overflow: hidden;
     position: relative; }
-    section .image-container img {
+    section .image-container .image {
       transition: all 0.5s linear;
       position: absolute;
       width: 100%;
-      height: auto;
-      z-index: 1; }
+      height: 100%;
+      z-index: 1;
+      background-repeat: no-repeat;
+      background-position: center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover; }
     section .image-container .image-overlay {
       background: rgba(64, 64, 65, 0);
       transition: all 0.5s linear;
@@ -425,9 +485,9 @@ section {
   section .caption {
     padding-top: 10px;
     font-size: 0.9em; }
-  section#capabilities {
+  section#capabilities, section#products {
     background: #b2b2b2; }
-    section#capabilities h1 {
+    section#capabilities h1, section#products h1 {
       color: #b9231c; }
 
 #lightslider {
