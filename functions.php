@@ -267,8 +267,6 @@
 
   }
 
-
-
   // Preview for added theme customizer manage_optionsadd_action( 'customize_preview_init' , 'my_customizer_preview' );
   function beyondphotonics_preview() {
   	wp_enqueue_script(

@@ -122,6 +122,15 @@ a {
   &:hover {
     color: $red;
   }
+  &.red {
+    color: $red;
+    border-bottom: 1px solid $red;
+    transition: all 0.5s linear;
+    &:hover {
+      color: $gray;
+      border-bottom: 1px solid $gray;
+    }
+  }
 }
 
 h1 {
@@ -310,7 +319,6 @@ section {
       }
     }
   }
-
   .image-container {
     border: 2px solid $gray;
     min-width: 150px;
@@ -354,7 +362,29 @@ section {
       color: $red;
     }
   }
+  &#leadership {
+    .leadership-item {
+      @include flexbox;
+      @include flex-direction(column);
+      @include justify-content(center);
+      @include align-items(center);
+      max-width: 300px;
+      padding: 30px;
+      background: $true-white;
+      text-align: center;
+      .thumbnail img{
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+        padding-bottom: 15px;
+      }
+      .title {
+        font-weight: 600;
+      }
+    }
+  }
 }
+
 
 #lightslider {
   padding: 15px 0;
@@ -362,7 +392,6 @@ section {
 
   }
 }
-
 
 .lSAction>a {
   top: 80px;

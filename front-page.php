@@ -113,6 +113,15 @@ get_header();
     <div class="intro-copy">
       <?php echo get_theme_mod( 'homepage_leadership_intro_copy'); ?>
     </div>
+    <div class="team-wrapper flex-wrapper">
+      <?php
+        $team = array( 'post_type' => 'team_members', );
+        $loop = new WP_Query( $team );
+        ?>
+        <?php while ( $loop->have_posts() ) : $loop->the_post();?>
+          <?php get_template_part('leadership_section'); ?>
+        <?php endwhile; ?>
+    </div>
   </section>
 
 </div>

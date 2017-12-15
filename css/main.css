@@ -279,6 +279,13 @@ a {
   transition: color 0.5s linear; }
   a:hover {
     color: #b9231c; }
+  a.red {
+    color: #b9231c;
+    border-bottom: 1px solid #b9231c;
+    transition: all 0.5s linear; }
+    a.red:hover {
+      color: #404041;
+      border-bottom: 1px solid #404041; }
 
 h1 {
   font-size: 2em;
@@ -489,6 +496,36 @@ section {
     background: #b2b2b2; }
     section#capabilities h1, section#products h1 {
       color: #b9231c; }
+  section#leadership .leadership-item {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    justify-content: center;
+    -ms-flex-pack: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    max-width: 300px;
+    padding: 30px;
+    background: white;
+    text-align: center; }
+    section#leadership .leadership-item .thumbnail img {
+      height: 150px;
+      width: 150px;
+      border-radius: 50%;
+      padding-bottom: 15px; }
+    section#leadership .leadership-item .title {
+      font-weight: 600; }
 
 #lightslider {
   padding: 15px 0; }
