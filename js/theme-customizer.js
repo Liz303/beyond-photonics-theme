@@ -19,13 +19,6 @@
  		  } );
  	 } );
 
-	 //Homepage Section 1
-	 wp.customize( 'homepage_section_one_title', function( value ) {
-			 value.bind( function( newval ) {
-					$('#homepage').find('.section-one h1').html( newval );
-			 } );
-		} );
-
 		wp.customize( 'homepage_section_one_intro_copy', function( value ) {
  			 value.bind( function( newval ) {
  					$('#homepage').find('.section-one .intro-copy').html( newval );

@@ -143,6 +143,10 @@ h1 {
   font-weight: 600;
 }
 
+p {
+  max-width: 600px;
+}
+
 // Navigation
 .header {
 	@include justify-content(space-between);
@@ -182,22 +186,39 @@ h1 {
   max-width: 1600px;
   .header-image {
     position: relative;
-    height: 300px;
+    min-height: 330px;
+    max-height: 600px;
+    height: 30vh;
     width: 100%;
     color: $white;
     .content-container {
       position: absolute;
-      max-width: 600px;
-      top: 0;
-      right: 0;
-      left: 0;
-      bottom: 0;
+      max-width: 1000px;
       z-index: 300;
+      left: calc(50% - 500px);
+      top: 0;
+      bottom: 0;
       @include justify-content(flex-start);
-      @include align-content(center);
       padding: 0 30px;
-      .copy {
+      &.page-content {
+        @include justify-content(space-between);
+      }
+      .copy-container {
+        width: 100%;
         @include align-self(flex-start);
+        &.intro-copy {
+          margin-bottom: -30px;
+          background: $white;
+          color: $gray;
+          padding: 30px 0;
+          height: 70%;
+          p {
+            margin: 0 auto;
+          }
+        }
+      }
+      a {
+        display: block;
       }
     }
     .image-overlay {
@@ -232,6 +253,10 @@ section {
   padding: 60px 30px;
   color: $gray;
   position: relative;
+  .section-content {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
   h1 {
     color: $gray;
     &:first-child {
@@ -320,13 +345,17 @@ section {
     }
   }
   .image-container {
-    border: 2px solid $gray;
-    min-width: 150px;
-    min-height: 150px;
-    width: 100%;
-    height: 100%;
+    // min-width: 150px;
+    // min-height: 150px;
+    // width: 100%;
+    // height: 100%;
     overflow: hidden;
     position: relative;
+    img {
+      border: 2px solid $gray;
+      max-width: 100%;
+      max-height: 100%;
+    }
     .image {
       transition: all 0.5s linear;
       position: absolute;
@@ -356,13 +385,34 @@ section {
     font-size: 0.9em;
   }
 
-  &#capabilities, &#products {
+  &#capabilities, &#products, &#contact {
     background: $light-gray;
     h1 {
       color: $red;
     }
   }
+  &#contact {
+    .content-wrap {
+      max-width: 400px;
+    }
+    .description {
+      span {
+        display: block;
+      }
+    }
+  }
   &#leadership {
+    .team-wrapper {
+      .one-half {
+        .content-wrap {
+          @include justify-content(space-between);
+          a {
+            @include align-self(flex-end);
+            width: 100%;
+          }
+        }
+      }
+    }
     .leadership-item {
       @include flexbox;
       @include flex-direction(column);
@@ -381,6 +431,11 @@ section {
       .title {
         font-weight: 600;
       }
+    }
+  }
+  &#contact {
+    .content-wrap {
+      padding: 30px;
     }
   }
 }
@@ -492,6 +547,37 @@ section {
               background: $gray-transparent;
             }
           }
+        }
+      }
+    }
+  }
+}
+
+// Pages
+.page-container {
+  .section-content {
+    .one-half {
+      &:first-child {
+        .content-container, .image-container {
+          padding: 30px 30px 0px 0;
+        }
+      }
+      &:last-child {
+        .content-container, .image-container {
+          padding: 30px 0px 0px 30px;
+        }
+      }
+      .content-container {
+        @include align-self(flex-start);
+        h2 {
+          margin-top: 0;
+        }
+      }
+      .image-container {
+        @include align-self(center);
+        img {
+          width: 100%;
+          height: auto;
         }
       }
     }

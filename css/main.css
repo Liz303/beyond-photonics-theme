@@ -38,10 +38,6 @@
   -ms-justify-content: center;
   justify-content: center;
   -ms-flex-pack: center;
-  -webkit-align-items: center;
-  -moz-align-items: center;
-  -ms-align-items: center;
-  align-items: center;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify; }
   .flex-wrapper.flex-end {
@@ -97,11 +93,7 @@
     flex: 2 1;
     position: relative;
     width: 50%;
-    min-width: 307px;
-    -webkit-align-items: center;
-    -moz-align-items: center;
-    -ms-align-items: center;
-    align-items: center; }
+    min-width: 307px; }
     .flex-wrapper .one-half.center {
       -webkit-justify-content: center;
       -moz-justify-content: center;
@@ -296,6 +288,9 @@ h1 {
   color: #ece8e8;
   font-weight: 600; }
 
+p {
+  max-width: 600px; }
+
 .header {
   -webkit-justify-content: space-between;
   -moz-justify-content: space-between;
@@ -332,32 +327,46 @@ h1 {
   max-width: 1600px; }
   .main-content-wrap .header-image {
     position: relative;
-    height: 300px;
+    min-height: 330px;
+    max-height: 600px;
+    height: 30vh;
     width: 100%;
     color: #ece8e8; }
     .main-content-wrap .header-image .content-container {
       position: absolute;
-      max-width: 600px;
-      top: 0;
-      right: 0;
-      left: 0;
-      bottom: 0;
+      max-width: 1000px;
       z-index: 300;
+      left: calc(50% - 500px);
+      top: 0;
+      bottom: 0;
       -webkit-justify-content: flex-start;
       -moz-justify-content: flex-start;
       -ms-justify-content: flex-start;
       justify-content: flex-start;
       -ms-flex-pack: flex-start;
-      -webkit-align-content: center;
-      -moz-align-content: center;
-      -ms-align-content: center;
-      align-content: center;
       padding: 0 30px; }
-      .main-content-wrap .header-image .content-container .copy {
+      .main-content-wrap .header-image .content-container.page-content {
+        -webkit-justify-content: space-between;
+        -moz-justify-content: space-between;
+        -ms-justify-content: space-between;
+        justify-content: space-between;
+        -ms-flex-pack: space-between; }
+      .main-content-wrap .header-image .content-container .copy-container {
+        width: 100%;
         -webkit-align-self: flex-start;
         -moz-align-self: flex-start;
         -ms-align-self: flex-start;
         align-self: flex-start; }
+        .main-content-wrap .header-image .content-container .copy-container.intro-copy {
+          margin-bottom: -30px;
+          background: #ece8e8;
+          color: #404041;
+          padding: 30px 0;
+          height: 70%; }
+          .main-content-wrap .header-image .content-container .copy-container.intro-copy p {
+            margin: 0 auto; }
+      .main-content-wrap .header-image .content-container a {
+        display: block; }
     .main-content-wrap .header-image .image-overlay {
       position: absolute;
       left: 0;
@@ -385,6 +394,9 @@ section {
   padding: 60px 30px;
   color: #404041;
   position: relative; }
+  section .section-content {
+    max-width: 1000px;
+    margin: 0 auto; }
   section h1 {
     color: #404041; }
     section h1:first-child {
@@ -461,13 +473,12 @@ section {
     section#products .flex-wrapper .one-half .image {
       margin-left: 0; }
   section .image-container {
-    border: 2px solid #404041;
-    min-width: 150px;
-    min-height: 150px;
-    width: 100%;
-    height: 100%;
     overflow: hidden;
     position: relative; }
+    section .image-container img {
+      border: 2px solid #404041;
+      max-width: 100%;
+      max-height: 100%; }
     section .image-container .image {
       transition: all 0.5s linear;
       position: absolute;
@@ -492,10 +503,26 @@ section {
   section .caption {
     padding-top: 10px;
     font-size: 0.9em; }
-  section#capabilities, section#products {
+  section#capabilities, section#products, section#contact {
     background: #b2b2b2; }
-    section#capabilities h1, section#products h1 {
+    section#capabilities h1, section#products h1, section#contact h1 {
       color: #b9231c; }
+  section#contact .content-wrap {
+    max-width: 400px; }
+  section#contact .description span {
+    display: block; }
+  section#leadership .team-wrapper .one-half .content-wrap {
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    -ms-justify-content: space-between;
+    justify-content: space-between;
+    -ms-flex-pack: space-between; }
+    section#leadership .team-wrapper .one-half .content-wrap a {
+      -webkit-align-self: flex-end;
+      -moz-align-self: flex-end;
+      -ms-align-self: flex-end;
+      align-self: flex-end;
+      width: 100%; }
   section#leadership .leadership-item {
     display: -webkit-box;
     display: -moz-box;
@@ -526,6 +553,8 @@ section {
       padding-bottom: 15px; }
     section#leadership .leadership-item .title {
       font-weight: 600; }
+  section#contact .content-wrap {
+    padding: 30px; }
 
 #lightslider {
   padding: 15px 0; }
@@ -615,6 +644,26 @@ section {
             border: 2px solid #b9231c; }
             .image-slide-wrapper .slider-container .images .slider-item:hover .image-container .image-overlay {
               background: rgba(64, 64, 65, 0.6); }
+
+.page-container .section-content .one-half:first-child .content-container, .page-container .section-content .one-half:first-child .image-container {
+  padding: 30px 30px 0px 0; }
+.page-container .section-content .one-half:last-child .content-container, .page-container .section-content .one-half:last-child .image-container {
+  padding: 30px 0px 0px 30px; }
+.page-container .section-content .one-half .content-container {
+  -webkit-align-self: flex-start;
+  -moz-align-self: flex-start;
+  -ms-align-self: flex-start;
+  align-self: flex-start; }
+  .page-container .section-content .one-half .content-container h2 {
+    margin-top: 0; }
+.page-container .section-content .one-half .image-container {
+  -webkit-align-self: center;
+  -moz-align-self: center;
+  -ms-align-self: center;
+  align-self: center; }
+  .page-container .section-content .one-half .image-container img {
+    width: 100%;
+    height: auto; }
 
 .footer {
   -webkit-justify-content: space-between;

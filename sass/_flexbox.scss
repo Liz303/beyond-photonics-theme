@@ -12,7 +12,6 @@
   @include flexbox;
   @include flex-flow(row wrap);
   @include justify-content(center);
-  @include align-items(center);
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   &.flex-end {
@@ -47,7 +46,6 @@
     position: relative;
     width: 50%;
     min-width: 307px;
-    @include align-items(center);
     &.center {
       @include justify-content(center);
       @include align-items(center);

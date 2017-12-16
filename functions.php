@@ -144,25 +144,8 @@
       'settings' => 'homepage_header_copy'
     ));
 
-    // HOMEPAGE Section 1 Title
-    $wp_customize->add_setting( 'homepage_section_one_title',
-      array(
-        'default' => 'Applications',
-        'transport' => 'postMessage'
-      )
-    );
-    $wp_customize->add_control( new WP_Customize_Control(
-    $wp_customize,
-    'homepage_section_one_title_control',
-      array(
-        'label'    => __( 'Add a title for section one', 'beyondphotonics' ),
-        'section'  => 'beyondphotonics_homepage_options',
-        'settings' => 'homepage_section_one_title',
-        'priority' => 40,
-      )
-    ));
 
-    // HOMEPAGE Section 1 intro copy
+    // HOMEPAGE Applications intro copy
     $wp_customize->add_setting( 'homepage_section_one_intro_copy', array(
       'capability' => 'edit_theme_options',
       'default' => 'Lorem Ipsum Dolor Sit amet',
