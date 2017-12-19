@@ -24,7 +24,16 @@ get_header();
          style="background-image: url('<?php echo get_theme_mod( 'homepage_header_image') ?>')">
     </div>
   </div>
-
+  <?php
+    $news = new WP_Query(array('category_name' => 'news', ));
+    if ( $news->have_posts() ) : ?>
+      <section id="news">
+        <div class="section-content title">
+          <h1> News </h1>
+        </div>
+          <?php include( locate_template( 'news_slider.php', false, false ) ); ?>
+      </section>
+  <?php endif; ?>
   <section class="section" id="Applications">
     <div class="section-content">
       <h1> Applications </h1>
@@ -38,9 +47,23 @@ get_header();
         $num_of_posts = $loop->post_count;
         $needs_slider = $num_of_posts > 4;
         $section_page = 'applications';
+        $i = 0;
       ?>
       <?php if($num_of_posts > 4) : ?>
-        <div> help </div>
+        <ul id="lightslider" class="applications-slider">
+          <?php
+            if ($loop->have_posts()) : while ($loop->have_posts()) : $loop->the_post(); ?>
+              <?php include( locate_template( 'image_slider_item.php', false, false ) )?>
+          <?php
+            $i++;
+            endwhile; endif;
+          ?>
+        </ul>
+        <a href="/applications">
+          <button class="btn-red">
+            View All Applications
+          </button>
+        </a>
       <?php else : ?>
         <div class="flex-wrapper image-row-wrap">
           <?php while ( $loop->have_posts() ) : $loop->the_post();?>
@@ -57,27 +80,38 @@ get_header();
       <div class="intro-copy">
         <?php echo get_theme_mod( 'homepage_capabilities_intro_copy'); ?>
       </div>
-      <ul id="lightslider" class="capabilities-slider">
-        <?php
-          $args = array(
-            'category_name' => 'capabilities',
-          );
-          $q = new WP_Query( $args);
-          $i = 0;
-            if ($q->have_posts()) : while ($q->have_posts()) : $q->the_post(); ?>
-            <?php include( locate_template( 'image_slider_item.php', false, false ) )
-            ?>
-        <?php
-          $i++; endwhile; endif;
-        ?>
-      </ul>
-      <div class="flex-wrapper justify-end">
-        <a href="#">
-          <button class="btn-red">
-            View All Services and Capabilities
-          </button>
-        </a>
-      </div>
+      <?php
+        $capabilities = array( 'post_type' => 'capability_sections', );
+        $loop = new WP_Query( $capabilities );
+        $num_of_posts = $loop->post_count;
+        $needs_slider = $num_of_posts > 4;
+        $section_page = 'capabilities';
+        $i = 0;
+      ?>
+      <?php if($num_of_posts > 4) : ?>
+        <ul id="lightslider" class="applications-slider">
+          <?php
+            if ($loop->have_posts()) : while ($loop->have_posts()) : $loop->the_post(); ?>
+              <?php include( locate_template( 'image_slider_item.php', false, false ) )?>
+          <?php
+            $i++;
+            endwhile; endif;
+          ?>
+        </ul>
+        <div class="flex-wrapper justify-end">
+          <a href="/capabilities">
+            <button class="btn-red">
+              View All Services and Capabilities
+            </button>
+          </a>
+        </div>
+      <?php else : ?>
+        <div class="flex-wrapper image-row-wrap">
+          <?php while ( $loop->have_posts() ) : $loop->the_post();?>
+            <?php include( locate_template( 'one_fourth_section.php', false, false ) )?>
+          <?php endwhile; ?>
+        </div>
+      <?php endif; ?>
     </div>
   </section>
 
@@ -88,7 +122,7 @@ get_header();
         <div class="intro-copy">
           <?php echo get_theme_mod( 'homepage_capabilities_intro_copy'); ?>
         </div>
-        <a href="#">
+        <a href="/tools-facilities">
           <button class="btn-red"> Learn More About Our Tools & Facilities</button>
         </a>
       </div>
@@ -103,15 +137,16 @@ get_header();
       <h1> Products </h1>
       <div class="flex-wrapper image-row-wrap">
         <?php
-          $args = array(
-            'category_name' => 'products',
-          );
-          $q = new WP_Query( $args);
-            if ($q->have_posts()) : while ($q->have_posts()) : $q->the_post(); ?>
-            <?php get_template_part( 'products_section' ); ?>
-          <?php
-          endwhile; endif;
+          $products = array( 'post_type' => 'product_sections', );
+          $loop = new WP_Query( $products );
+          $num_of_posts = $loop->post_count;
+          $needs_slider = $num_of_posts > 4;
+          $section_page = 'products';
         ?>
+        <?php
+          if ($loop->have_posts()) : while ($loop->have_posts()) : $loop->the_post(); ?>
+          <?php get_template_part( 'products_section' ); ?>
+        <?php endwhile; endif; ?>
       </div>
     </div>
   </section>

@@ -16,8 +16,6 @@ var Slider = {
 			var firstVisible;
 			var indexOfActive;
 
-			debugger;
-
 			if ($(slider).find('.slider-item.first').length === 0) {
 				$(images[0]).addClass('first');
 			}
@@ -69,4 +67,28 @@ jQuery(document).ready(function($) {
     slideMargin: 15,
     pager: false
   });
+
+  $('.page-image-slider').lightSlider({
+     gallery: false,
+     cssEasing: 'ease', //'cubic-bezier(0.25, 0, 0.25, 1)',//
+     easing: 'linear', //'for jquery animation',////
+     item: 1,
+     loop: true,
+     slideMargin: 15,
+     keyPress: true,
+     controls: true
+  });
+
+  $('.news-slider').lightSlider({
+    cssEasing: 'ease', //'cubic-bezier(0.25, 0, 0.25, 1)',//
+    easing: 'linear', //'for jquery animation',////
+    speed: 400, //ms'
+    auto: false,
+    item: 3,
+    keyPress: true,
+    controls: true,
+    slideMargin: 15,
+    pager: false
+  });
+
  });
