@@ -41,16 +41,16 @@
   </section>
   <section class="team-title" id="leadership-team">
     <div class="section-content">
-      <h2> Our Leadership Team </h2>
-    </div>
-  </section>
+      <div class="section-header-container flex-wrapper">
+        <h1> Our Leadership Team </h1>
+        <div class="line"></div>
+      </div>
+
   <?php
     $team = array( 'post_type' => 'team_members', );
     $loop = new WP_Query( $team );
-
     while ( $loop->have_posts() ) : $loop->the_post();?>
-    <section id="<?php echo urlencode(get_the_title()) ?>" class="team-wrapper">
-      <div class="section-content leadership-item flex-wrapper">
+      <div class="section-content leadership-item flex-wrapper" id="<?php echo urlencode(get_the_title()) ?>">
           <div class="one-fourth flex-wrapper">
             <div class="thumbnail">
               <?php the_post_thumbnail( ); ?>
@@ -65,36 +65,37 @@
               <?php the_content() ?>
             </div>
           </div>
-
       </div>
-    </section>
+
   <?php endwhile; ?>
+  </div>
+</section>
 
   <section class="team-title" id="experience-expertise">
-    <div class="section-content title">
-      <h2> Experience & Expertise </h2>
-    </div>
+    <div class="section-content">
+      <div class="section-header-container flex-wrapper">
+        <h1> Experience & Expertise </h1>
+        <div class="line"></div>
+      </div>
 
-    <?php
-      $experience = array( 'post_type' => 'experience_sections', );
-      $experience_loop = new WP_Query( $experience );
+      <?php
+        $experience = array( 'post_type' => 'experience_sections', );
+        $experience_loop = new WP_Query( $experience );
 
-      while ( $experience_loop->have_posts() ) : $experience_loop->the_post();?>
-        <div class="section-content" id="<?php echo urlencode(get_the_title()) ?>">
-          <div class="title"> <h4><?php the_title() ?></h4></div>
-          <div class="experience content-container">
-            <?php the_content() ?>
+        while ( $experience_loop->have_posts() ) : $experience_loop->the_post();?>
+          <div class="section-content" id="<?php echo urlencode(get_the_title()) ?>">
+            <div class="title"> <h4><?php the_title() ?></h4></div>
+            <div class="experience content-container">
+              <?php the_content() ?>
+            </div>
           </div>
-        </div>
-      <?php endwhile ?>
+        <?php endwhile ?>
+      </div>
     </section>
     <?php
     $news = new WP_Query(array('category_name' => 'news', ));
     if ( $news->have_posts() ) : ?>
       <section id="news">
-        <div class="section-content title">
-          <h2> News </h2>
-        </div>
           <?php include( locate_template( 'news_slider.php', false, false ) ); ?>
       </section>
     <?php endif; ?>

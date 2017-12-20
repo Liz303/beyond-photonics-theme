@@ -28,15 +28,15 @@ get_header();
     $news = new WP_Query(array('category_name' => 'news', ));
     if ( $news->have_posts() ) : ?>
       <section id="news">
-        <div class="section-content title">
-          <h1> News </h1>
-        </div>
           <?php include( locate_template( 'news_slider.php', false, false ) ); ?>
       </section>
   <?php endif; ?>
   <section class="section" id="Applications">
     <div class="section-content">
-      <h1> Applications </h1>
+      <div class="section-header-container flex-wrapper">
+        <h1> Applications </h1>
+        <div class="line"></div>
+      </div>
       <div class="intro-copy">
         <?php echo get_theme_mod( 'homepage_section_one_intro_copy'); ?>
       </div>
@@ -76,7 +76,10 @@ get_header();
 
   <section class="section" id="capabilities">
     <div class="section-content">
-      <h1> Capabilities </h1>
+      <div class="section-header-container flex-wrapper">
+        <h1> Capabilities </h1>
+        <div class="line"></div>
+      </div>
       <div class="intro-copy">
         <?php echo get_theme_mod( 'homepage_capabilities_intro_copy'); ?>
       </div>
@@ -116,26 +119,33 @@ get_header();
   </section>
 
   <section class="section" id="tools-and-facilities">
-    <div class="section-content flex-wrapper">
-      <div class="one-half flex-wrapper">
+    <div class="section-content">
+      <div class="section-header-container flex-wrapper">
         <h1> Tools & Facilities </h1>
-        <div class="intro-copy">
-          <?php echo get_theme_mod( 'homepage_capabilities_intro_copy'); ?>
-        </div>
-        <a href="/tools-facilities">
-          <button class="btn-red"> Learn More About Our Tools & Facilities</button>
-        </a>
+        <div class="line"></div>
       </div>
-      <div class="image one-half" style="background-image: url('<?php echo get_theme_mod( 'tools_and_facilities_image') ?>')">
-
+      <div class="flex-wrapper tools-content">
+        <div class="one-half flex-wrapper">
+          <div class="intro-copy">
+            <?php echo get_theme_mod( 'homepage_capabilities_intro_copy'); ?>
+          </div>
+          <a href="/tools-facilities">
+            <button class="btn-red"> Learn More About Our Tools & Facilities</button>
+          </a>
+        </div>
+        <div class="image one-half" style="background-image: url('<?php echo get_theme_mod( 'tools_and_facilities_image') ?>')">
+        </div>
       </div>
     </div>
   </section>
 
   <section class="section" id="products">
     <div class="section-content">
-      <h1> Products </h1>
-      <div class="flex-wrapper image-row-wrap">
+      <div class="section-header-container flex-wrapper">
+        <h1> Products </h1>
+        <div class="line"></div>
+      </div>
+      <div class="flex-wrapper">
         <?php
           $products = array( 'post_type' => 'product_sections', );
           $loop = new WP_Query( $products );
@@ -153,7 +163,10 @@ get_header();
 
   <section class="section" id="leadership">
     <div class="section-content">
-      <h1> Leadership Team </h1>
+      <div class="section-header-container flex-wrapper">
+        <h1> Leadership Team </h1>
+        <div class="line"></div>
+      </div>
       <div class="intro-copy">
         <?php echo get_theme_mod( 'homepage_leadership_intro_copy'); ?>
       </div>
@@ -211,20 +224,12 @@ get_header();
             <?php endwhile; ?>
           </div>
         </div>
-
       </div>
       <div class="one-half">
         <div class="content-wrap">
-          <?php
-            $args = array(
-              'category_name' => 'contact',
-            );
-            $q = new WP_Query( $args);
-              if ($q->have_posts()) : while ($q->have_posts()) : $q->the_post(); ?>
+            <?php while ( $loop->have_posts() ) : $loop->the_post();?>
               <?php echo the_content(); ?>
-            <?php
-            endwhile; endif;
-          ?>
+            <?php endwhile; ?>
         </div>
       </div>
     </div>

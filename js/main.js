@@ -87,7 +87,7 @@ jQuery(document).ready(function($) {
     item: 3,
     keyPress: true,
     controls: true,
-    slideMargin: 15,
+    slideMargin: 20,
     pager: false
   });
 

@@ -104,7 +104,7 @@ button {
       color: $gray;
     }
   }
-  &.btn-red {
+  &.btn-red,  {
     background: $red-invisible;
     border: 2px solid $red;
     color: $red;
@@ -112,6 +112,17 @@ button {
       background: $red;
       color: $white;
     }
+  }
+}
+
+div.wpforms-container-full .wpforms-form button[type=submit] {
+  background: $red !important;
+  border: 2px solid $red !important;
+  color: $white !important;
+  width: 100%;
+  &:hover {
+    background: $red-transparent !important;
+    color: $red !important;
   }
 }
 
@@ -133,6 +144,10 @@ a {
   }
 }
 
+h1, h2, h4 {
+  font-weight: 700;
+}
+
 h1 {
 	font-size: 2em;
 	line-height: 1.2em;
@@ -140,7 +155,6 @@ h1 {
 	margin-bottom: 0;
 	text-transform: capitalize;
   color: $white;
-  font-weight: 600;
 }
 
 h2 {
@@ -231,8 +245,8 @@ ul li {
     }
     .content-container {
       position: absolute;
-      padding: 60px 30px;
-      max-width: 1000px;
+      padding: 60px 0px;
+      max-width: 1100px;
       z-index: 300;
       left: calc(50% - 500px);
       top: 0;
@@ -282,7 +296,7 @@ ul li {
   .header-content-container {
     position: relative;
     width: calc(70% + 60px);
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
     z-index: 300;
     margin-top: -300px;
@@ -308,12 +322,29 @@ ul li {
 section {
   display: block;
   max-width: 100%;
-  padding: 60px 30px;
+  padding: 30px 30px;
   color: $gray;
   position: relative;
   .section-content {
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
+  }
+  .section-header-container {
+    @include align-items(center);
+    padding-bottom: 30px;
+    h1 {
+      padding-right: 15px;
+      color: $gray;
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+    .line {
+      flex: 2 1;
+      height: 6px;
+      background: $gray;
+      float: left;
+    }
   }
   h1 {
     color: $gray;
@@ -345,12 +376,15 @@ section {
       }
     }
   }
-  &#tools-and-facilities .flex-wrapper, &#products .flex-wrapper {
+  &#tools-and-facilities .tools-content, &#products .tools-content {
     height: 40vh;
     min-height: 330px;
     max-height: 600px;
     @include align-items(stretch);
     @include justify-content(flex-start);
+    .one-half {
+      @include justify-content(flex-start);
+    }
     .one-half.image, .one-half .image {
       margin: 0 0 0 30px;
       transition: all 0.5s linear;
@@ -368,40 +402,53 @@ section {
       @include align-self(flex-end);
     }
   }
-  &#products .flex-wrapper {
-    height: auto;
-    max-height: 10000px;
-    @include align-items(flex-start);
-    .one-half {
-      .content-container {
-        .caption {
-          font-size: 1.1em;
-          line-height: 1.7em;
-          font-weight: 600;
+  &#products {
+    .flex-wrapper {
+      height: auto;
+      max-height: 10000px;
+      &.section-header-container {
+        @include align-items(center);
+      }
+      .one-half {
+        .content-container {
+          @include justify-content(flex-start);
+          .caption {
+            font-size: 1.1em;
+            line-height: 1.7em;
+            font-weight: 700;
+          }
+          .image {
+            background-repeat: no-repeat;
+            background-position: center center;
+           -webkit-background-size: cover;
+           -moz-background-size: cover;
+           -o-background-size: cover;
+           background-size: cover;
+            min-height: 300px;
+            height: 40vh;
+            width: 100%;
+            max-height: 500px;
+          }
+          a {
+            @include align-self(flex-end);
+            float: right;
+            padding-top: 20px;
+          }
+        }
+        &:first-child {
+          .content-container {
+            margin-right: 30px;
+          }
+        }
+        &:last-child {
+          margin-left: 30px;
+          .content-container {
+            margin-right: 30px;
+          }
         }
         .image {
-          min-height: 300px;
-          height: 40vh;
-          max-height: 500px;
+          margin-left: 0;
         }
-        a {
-          float: right;
-          padding-top: 20px;
-        }
-      }
-      &:first-child {
-        .content-container {
-          margin-right: 15px;
-        }
-      }
-      &:last-child {
-        margin-left: 15px;
-        .content-container {
-          margin-right: 15px;
-        }
-      }
-      .image {
-        margin-left: 0;
       }
     }
   }
@@ -445,16 +492,13 @@ section {
     padding-top: 10px;
     font-size: 0.9em;
   }
-
-  &#capabilities, &#products, &#contact {
-    background: $light-gray;
-    h1 {
-      color: $red;
-    }
-  }
   &#contact {
+    background: $light-gray;
     .content-wrap {
       max-width: 400px;
+      p {
+        margin: 0;
+      }
     }
     .description {
       span {
@@ -507,29 +551,29 @@ section {
     }
   }
   &#news {
-    background: #5d120f;
-    color: $white;
+    background: $true-white;
+    color: $gray;
     margin: 15px 0;
     padding: 30px;
-    h2, h1 {
-      color: $white;
-      margin: 0;
-    }
+    -webkit-box-shadow: 0px 0px 6px 3px #e7e7e7;
+    -moz-box-shadow: 0px 0px 6px 3px #e7e7e7;
+    box-shadow: 0px 0px 6px 3px #e7e7e7;
     .title {
       font-size: 1.1em;
-      padding-bottom: 10px;
+      // padding-bottom: 10px;
       font-weight: bold;
     }
     .lslide>a {
-      color: $white;
+      color: $gray;
       &:hover {
-        color: $gray;
+        color: $red;
       }
     }
     .lSAction>a {
+      top: 40%;
       color: $white;
       &:hover {
-        color: $gray;
+        color: $red;
       }
     }
   }
@@ -540,7 +584,7 @@ section {
     padding-top: 20px;
   }
   &.buttons {
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
     .one-half {
       &:first-child {
@@ -563,17 +607,6 @@ section {
       padding: 25px 15px;
     }
   }
-  .content-container {
-    a {
-      border-bottom: 2px solid;
-      border-color: $red;
-      color: $red;
-      &:hover {
-        border-color: 2px solid $gray;
-        color: $gray;
-      }
-    }
-  }
   &.post {
     .featured-image {
       margin-bottom: 30px;
@@ -592,6 +625,7 @@ section {
 }
 
 .leadership-item {
+  padding-bottom: 60px;
   .one-fourth {
     @include justify-content(center);
     text-align: center;
@@ -610,6 +644,33 @@ section {
   }
 }
 
+// Form
+div.wpforms-container-full .wpforms-form .wpforms-field-label {
+  font-weight: 600 !important;
+}
+div.wpforms-container-full .wpforms-form .wpforms-required-label {
+  color: $red !important;
+}
+
+div.wpforms-container-full .wpforms-form input[type=date],
+div.wpforms-container-full .wpforms-form input[type=datetime],
+div.wpforms-container-full .wpforms-form input[type=datetime-local],
+div.wpforms-container-full .wpforms-form input[type=email],
+div.wpforms-container-full .wpforms-form input[type=month],
+div.wpforms-container-full .wpforms-form input[type=number],
+div.wpforms-container-full .wpforms-form input[type=password],
+div.wpforms-container-full .wpforms-form input[type=range],
+div.wpforms-container-full .wpforms-form input[type=search],
+div.wpforms-container-full .wpforms-form input[type=tel],
+div.wpforms-container-full .wpforms-form input[type=text],
+div.wpforms-container-full .wpforms-form input[type=time],
+div.wpforms-container-full .wpforms-form input[type=url],
+div.wpforms-container-full .wpforms-form input[type=week],
+div.wpforms-container-full .wpforms-form select,
+div.wpforms-container-full .wpforms-form textarea {
+  background-color: $white !important;
+  border: 2px solid $gray !important;
+}
 
 // Image Slider
 #lightslider {
@@ -649,13 +710,20 @@ section {
 }
 
 .page-container {
-  #news {
-    .lSAction>a {
-      top: 30%;
+  section {
+    .content-container {
+      a {
+        border-bottom: 2px solid;
+        border-color: $red;
+        color: $red;
+        &:hover {
+          border-color: 2px solid $gray;
+          color: $gray;
+        }
+      }
     }
   }
   .lightSlider {
-    min-height: 300px;
     padding: 30px 30px 30px 0;
     .image {
       img {
@@ -664,9 +732,6 @@ section {
         height: auto;
       }
     }
-  }
-  .lSAction>a {
-    top: 50%;
   }
 }
 
