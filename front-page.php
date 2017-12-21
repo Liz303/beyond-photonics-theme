@@ -33,10 +33,7 @@ get_header();
   <?php endif; ?>
   <section class="section" id="Applications">
     <div class="section-content">
-      <div class="section-header-container flex-wrapper">
-        <h1> Applications </h1>
-        <div class="line"></div>
-      </div>
+      <h2 class="hr-titles"><span>Applications</span></h2>
       <div class="intro-copy">
         <?php echo get_theme_mod( 'homepage_section_one_intro_copy'); ?>
       </div>
@@ -76,10 +73,7 @@ get_header();
 
   <section class="section" id="capabilities">
     <div class="section-content">
-      <div class="section-header-container flex-wrapper">
-        <h1> Capabilities </h1>
-        <div class="line"></div>
-      </div>
+      <h2 class="hr-titles"><span>Capabilities</span></h2>
       <div class="intro-copy">
         <?php echo get_theme_mod( 'homepage_capabilities_intro_copy'); ?>
       </div>
@@ -120,10 +114,7 @@ get_header();
 
   <section class="section" id="tools-and-facilities">
     <div class="section-content">
-      <div class="section-header-container flex-wrapper">
-        <h1> Tools & Facilities </h1>
-        <div class="line"></div>
-      </div>
+      <h2 class="hr-titles"><span>Tools & Facilities</span></h2>
       <div class="flex-wrapper tools-content">
         <div class="one-half flex-wrapper">
           <div class="intro-copy">
@@ -141,10 +132,7 @@ get_header();
 
   <section class="section" id="products">
     <div class="section-content">
-      <div class="section-header-container flex-wrapper">
-        <h1> Products </h1>
-        <div class="line"></div>
-      </div>
+      <h2 class="hr-titles"><span>Products</span></h2>
       <div class="flex-wrapper">
         <?php
           $products = array( 'post_type' => 'product_sections', );
@@ -163,10 +151,7 @@ get_header();
 
   <section class="section" id="leadership">
     <div class="section-content">
-      <div class="section-header-container flex-wrapper">
-        <h1> Leadership Team </h1>
-        <div class="line"></div>
-      </div>
+      <h2 class="hr-titles"><span>Leadership Team</span></h2>
       <div class="intro-copy">
         <?php echo get_theme_mod( 'homepage_leadership_intro_copy'); ?>
       </div>
@@ -176,7 +161,9 @@ get_header();
           $loop = new WP_Query( $team );
           ?>
           <?php while ( $loop->have_posts() ) : $loop->the_post();?>
-            <?php get_template_part('leadership_section'); ?>
+            <?php if (get_the_title() !== 'Intro') { ?>
+              <?php get_template_part('leadership_section'); ?>
+            <?php } ?>
           <?php endwhile; ?>
       </div>
     </div>

@@ -1,22 +1,29 @@
 <!-- Footer -->
     <div class="footer">
       <div class="flex-wrapper">
-          <section class="one-third  flex-wrapper justify-start">
-            <a href="https://www.google.com/maps/place/6205+Lookout+Rd+b,+Boulder,+CO+80301/@40.069627,-105.2110358,17z/data=!3m1!4b1!4m5!3m4!1s0x876bf1d2bc071933:0xa5cb374c2382dc1d!8m2!3d40.069627!4d-105.2088471"
-               target="_blank">
-              6205 Lookout Rd, Suite B <br/>
-              Boulder, CO 80301
-            </a>
-          </section>
-          <section class="one-third flex-wrapper">
-            <div class="row">
-              <a href="mailto:info@beyondphotonics.com" target="blank">
-                info@beyondphotonics.com
+          <section class="one-third flex-wrapper justify-start">
+            <?php
+              $contact = array( 'post_type' => 'contacts', );
+              $loop = new WP_Query( $contact );
+               while ( $loop->have_posts() ) : $loop->the_post();
+
+
+            ?>
+            <div class="row flex-wrapper">
+              <a href="mailto:<?php echo get_post_meta( $post->ID, 'email', true ) ?>" target="blank">
+                <?php echo get_post_meta( $post->ID, 'email', true ) ?>
               </a>
             </div>
-            <div class="row">
-                303.475.2088
+            <div class="row flex-wrapper">
+              <div><?php echo get_post_meta( $post->ID, 'phone', true )  ?></div>
             </div>
+
+          </section>
+          <section class="one-third center logo flex-wrapper">
+  						<?php
+  							if ( has_custom_logo() ) {
+                  the_custom_logo();
+  							}  ?>
           </section>
           <section class="one-third flex-wrapper justify-end">
             <a href="<?php echo get_option('linkedin'); ?>" ><i class="fa fa-linkedin"></i></a>
@@ -26,9 +33,32 @@
 
       <!-- Copyright -->
       <div class="copyright flex-wrapper">
-          <div>&copy; Beyond Photonics. All rights reserved</div>
+          <div>&copy; Beyond Photonics. All rights reserved |
+            <?php
+              $google_address_link = get_post_meta( $post->ID, 'google_map_link', true );
+              if( !empty($google_address_link)) {
+              echo '<a href="' . esc_html( get_post_meta( get_the_ID(), 'google_map_link', true )) . '">';
+              }
+              echo
+              '<span>' .
+                esc_html( get_post_meta( get_the_ID(), 'address_street_1', true ) ) .
+              ', ' .
+                esc_html( get_post_meta( get_the_ID(), 'address_street_2', true ) ) .
+              '</span>
+               <span> ' .
+                 esc_html( get_post_meta( get_the_ID(), 'address_city', true ) ) .
+              ', ' .
+                 esc_html( get_post_meta( get_the_ID(), 'address_state', true ) ) .
+              ' ' .
+                 esc_html( get_post_meta( get_the_ID(), 'address_zip', true ) ) .
+              '</span>';
+              if( !empty($google_address_link)) {
+                 echo '</a>';
+              }
+            ?>
+          </div>
       </div>
-
+        <?php endwhile; ?>
     </div>
   </div>
 

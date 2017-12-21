@@ -91,4 +91,32 @@ jQuery(document).ready(function($) {
     pager: false
   });
 
+  $('#nav .subnav').each(function(){
+    var parentwidth = $(this).parents().eq(0).width()/2;
+    var width = $(this).width()/2;
+    var left = -(width - parentwidth) + 'px';
+    $(this).css('left', left);
+  });
+
+  $('.read-more').on('click', function() {
+    var content = $(this).siblings('.abbreviated');
+    if (content.hasClass('open')) {
+      content.removeClass('open');
+      $(this).children('.close-text').addClass('hidden');
+      $(this).children('.open-text').removeClass('hidden');
+    } else {
+      $('.read-more').each(function(){
+        var alt_content = $(this).siblings('.abbreviated');
+        if ( alt_content.hasClass('open')) {
+          alt_content.removeClass('open');
+          $(this).children('.close-text').addClass('hidden');
+          $(this).children('.open-text').removeClass('hidden');
+        }
+      })
+      content.addClass('open');
+      $(this).children('.open-text').addClass('hidden');
+      $(this).children('.close-text').removeClass('hidden');
+    }
+  });
+
  });

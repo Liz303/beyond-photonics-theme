@@ -4,7 +4,7 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,600,600italic");
 
 html, body {
-  font-family: 'OpenSans', 'Helvetica', sans-serif;
+  font-family: Georgia, serif;
   font-size: 17px;
   font-weight: 400;
   line-height: 1.5em;
@@ -13,7 +13,7 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
   font-smoothing: antialiased;
-  background: $white;
+  background: $true-white;
   overflow-x: hidden;
 }
 
@@ -89,9 +89,11 @@ button {
   padding: 10px 15px;
   margin: 10px 0;
   border-radius: 0;
+  font-family: 'OpenSans', 'Helvetica', sans-serif;
   transition: all 0.5s linear;
   font-size: 1em;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   &:hover {
     cursor: pointer;
   }
@@ -111,6 +113,58 @@ button {
     &:hover {
       background: $red;
       color: $white;
+    }
+  }
+}
+
+// titles
+.hr-titles {
+  position: relative;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 70px;
+  line-height: 15px;
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    right: 0;
+    top: 5px;
+    height: 2px;
+    background: $white;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    right: 0;
+    top: 9px;
+    height: 1px;
+    border-bottom: 1px dotted #999;
+  }
+  &.tall-title {
+    span {
+      margin-top: -33px;
+    }
+  }
+  span {
+    text-transform: uppercase;
+    letter-spacing: .3em;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 27px;
+    padding-right: 27px;
+    max-width: 70%;
+    line-height: 1.3em;
+    background: #fff;
+    margin-top: -12px;
+  }
+  &.read-more {
+    span {
+      color: $red;
     }
   }
 }
@@ -146,6 +200,7 @@ a {
 
 h1, h2, h4 {
   font-weight: 700;
+  letter-spacing: 0.05em;
 }
 
 h1 {
@@ -179,6 +234,14 @@ ul li {
   padding: 0 0 12px 0;
 }
 
+ol {
+  padding-left: 20px;
+  max-width: 700px;
+  li {
+    padding-bottom: 15px;
+  }
+}
+
 .two-column {
   -moz-column-count: 2;
   -webkit-column-count: 2;
@@ -190,7 +253,13 @@ ul li {
 	@include justify-content(space-between);
   @include align-content(flex-end);
   padding: 10px 30px;
-  border-bottom: 2px solid $gray;
+  border-bottom: 1px solid $white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 500000;
+  background: white;
   #logo {
     max-width: 150px;
     position: relative;
@@ -202,18 +271,67 @@ ul li {
   }
 	#nav {
     font-size: 15px;
+    font-family: 'OpenSans', 'Helvetica', sans-serif;
     ul {
       list-style: none;
+      margin: 0;
+      @include align-self(flex-end);
       li {
         display: inline-block;
-        padding: 0 10px 0 0;
+        padding: 0 15px 0 0;
+        position: relative;
+        margin-bottom: 0;
+        padding-bottom: 30px;
+        margin-bottom: -30px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
         &:first-child {
           padding-left: 0;
         }
-        &.current_page_item a{
-          padding-bottom: 5px;
-          color: $red;
-          border-bottom: 1px solid $red;
+        &.current_page_item {
+          a {
+            padding-bottom: 5px;
+            color: $red;
+            border-bottom: 1px solid $red;
+          }
+          .subnav li a {
+            color: $gray;
+            border-bottom: none;
+            &:hover {
+              color: $red;
+            }
+          }
+        }
+        .subnav {
+          position: absolute;
+          font-size: 12px;
+          padding-left: 0;
+          z-index: 500;
+          background: $true-white;
+          border: 1px solid $gray;
+          display: none;
+          margin-top: 5px;
+          li {
+            height: 25px;
+            display: block;
+            border-bottom: 1px solid $gray;
+            padding: 10px 10px;
+            margin: 0 10px;
+            white-space: nowrap;
+            color: $gray;
+            &:last-child {
+              border-bottom: none;
+            }
+            &:hover {
+              color: $red;
+            }
+          }
+        }
+        &:hover {
+          .subnav {
+            display: block;
+          }
         }
       }
     }
@@ -224,7 +342,11 @@ ul li {
 .main-content-wrap {
   max-width: 1600px;
   position: relative;
+  margin-top: 35px;
   &.page-container {
+    section {
+      padding: 60px 30px;
+    }
     .header-image {
       height: 330px;
       .content-container {
@@ -238,10 +360,17 @@ ul li {
     max-height: 600px;
     height: 30vh;
     width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 30px;
+    border-bottom: 1px solid $white;
     color: $white;
     &.short {
       height: 10vh;
       min-height: 110px;
+      .content-container {
+        top: 25px;
+      }
     }
     .content-container {
       position: absolute;
@@ -251,6 +380,9 @@ ul li {
       left: calc(50% - 500px);
       top: 0;
       bottom: 0;
+      p {
+        margin-top: 0;
+      }
       @include justify-content(flex-start);
       .copy-container {
         width: 100%;
@@ -272,8 +404,8 @@ ul li {
     }
     .image-overlay {
       position: absolute;
-      left: 0;
-      right: 0;
+      left: 30px;
+      right: 30px;
       bottom: 0;
       top: 0;
       background: $purple-transparent;
@@ -281,8 +413,8 @@ ul li {
     }
     .image {
       position: absolute;
-      left: 0;
-      right: 0;
+      left: 30px;
+      right: 30px;
       bottom: 0;
       top: 0;
       -webkit-background-size: cover;
@@ -299,12 +431,12 @@ ul li {
     max-width: 1100px;
     margin: 0 auto;
     z-index: 300;
-    margin-top: -300px;
+    margin-top: -170px;
     h1, .copy-container {
       width: 100%;
     }
     .copy-container {
-      background: $white;
+      background: $true-white;
       padding: 60px 30px 30px 30px;
       p, ul {
         max-width: 700px;
@@ -328,6 +460,12 @@ section {
   .section-content {
     max-width: 1100px;
     margin: 0 auto;
+    &.centered-content {
+      max-width: 700px;
+      h4 {
+        text-align: center;
+      }
+    }
   }
   .section-header-container {
     @include align-items(center);
@@ -341,7 +479,7 @@ section {
     }
     .line {
       flex: 2 1;
-      height: 6px;
+      height: 3px;
       background: $gray;
       float: left;
     }
@@ -356,17 +494,26 @@ section {
     max-width: 700px;
   }
   .image-row-wrap {
-    padding: 15px 0px;
+    padding: 30px 0px;
     @include align-items(flex-start);
     .one-fourth {
+      a {
+        width: 100%;
+      }
       .content-container {
         transition: all 0.5s linear;
         padding: 10px;
         position: relative;
+        &:hover {
+          .image-overlay {
+            background: $gray-transparent;
+          }
+        }
       }
       &:first-child {
         .content-container,  {
           padding-left: 0;
+          @include justify-content(flex-start);
         }
       }
       &:last-child {
@@ -401,6 +548,9 @@ section {
     .one-half a {
       @include align-self(flex-end);
     }
+  }
+  &#tools-and-facilities, &#products, &#leadership {
+    padding-bottom: 80px;
   }
   &#products {
     .flex-wrapper {
@@ -460,7 +610,7 @@ section {
     overflow: hidden;
     position: relative;
     img {
-      border: 2px solid $gray;
+      border: 1px solid $gray;
       max-width: 100%;
       max-height: 100%;
     }
@@ -525,13 +675,16 @@ section {
       @include align-items(center);
       max-width: 300px;
       padding: 30px;
-      background: $true-white;
+      background: $white;
       text-align: center;
-      .thumbnail img{
-        height: 150px;
-        width: 150px;
-        border-radius: 50%;
-        padding-bottom: 15px;
+      .thumbnail {
+        text-align: center;
+        img {
+          height: 150px;
+          width: 150px;
+          border-radius: 50%;
+          padding-bottom: 15px;
+        }
       }
       .title {
         font-weight: 600;
@@ -551,29 +704,58 @@ section {
     }
   }
   &#news {
-    background: $true-white;
-    color: $gray;
-    margin: 15px 0;
+    background: $white;
+    margin: 50px 0;
     padding: 30px;
-    -webkit-box-shadow: 0px 0px 6px 3px #e7e7e7;
-    -moz-box-shadow: 0px 0px 6px 3px #e7e7e7;
-    box-shadow: 0px 0px 6px 3px #e7e7e7;
+    -webkit-box-shadow: 0px 0px 6px 3px #d4d4d4;
+    -moz-box-shadow: 0px 0px 6px 3px #d4d4d4;
+    box-shadow: 0px 0px 6px 3px #d4d4d4;
+    color: $true-white;
+    .image-container {
+      min-height: 200px;
+    }
+    .lslide {
+      .caption {
+        padding-top: 10px;
+        position: absolute;
+        top: 135px;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: 300;
+        background: rgba(236, 232, 232, 0.8);
+        border-top: 1px solid $true-white;
+        transition: top 0.5s linear;
+        padding: 10px 15px;
+      }
+      &:hover {
+        .caption {
+          top: 0;
+        }
+      }
+    }
+
     .title {
       font-size: 1.1em;
-      // padding-bottom: 10px;
-      font-weight: bold;
+      font-weight: 600;
     }
     .lslide>a {
       color: $gray;
       &:hover {
-        color: $red;
+        color: $gray;
       }
     }
+    .lightSlider.lsGrab>* {
+      padding-bottom: 0;
+      position: relative;
+    }
     .lSAction>a {
-      top: 40%;
-      color: $white;
+      top: 44%;
+      opacity: 1;
+      font-weight: 100;
+      color: $true-white;
       &:hover {
-        color: $red;
+        color: $white;
       }
     }
   }
@@ -589,12 +771,12 @@ section {
     .one-half {
       &:first-child {
         .content-container {
-          padding: 30px 30px 30px 0;
+          padding: 0px 30px 30px 0;
         }
       }
       &:last-child {
         .content-container {
-          padding: 30px 0 30px 30px;
+          padding: 0px 0 30px 30px;
         }
       }
       .content-container {
@@ -624,17 +806,69 @@ section {
   }
 }
 
+.page-container {
+  #leadership-team, #experience-expertise {
+    .leadership-item {
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
+    .content-container {
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
+    .read-more {
+      &:last-child {
+        margin-bottom: 15px;
+      }
+    }
+  }
+}
+
 .leadership-item {
   padding-bottom: 60px;
+}
+.leadership-item, .experience {
+  .content-container {
+    padding: 50px 0;
+  }
+  .abbreviated {
+    height: auto;
+    max-height: 396px;
+    transition: max-height 1s ease-out;
+    overflow: hidden;
+    &.open {
+      max-height: 1000px;
+      transition: max-height 1s ease-out;
+      height: auto;
+    }
+  }
+  .read-more {
+    margin-top: 20px;
+    span {
+      &:hover {
+        cursor: pointer;
+      }
+      &.close-text, &.open-text {
+        &.hidden {
+          display: none;
+        }
+      }
+    }
+  }
   .one-fourth {
     @include justify-content(center);
     text-align: center;
   }
-  .thumbnail img{
-    height: 200px;
-    width: 200px;
-    border-radius: 50%;
-    padding-bottom: 15px;
+  .thumbnail {
+    text-align: center;
+    img {
+      height: 200px;
+      width: 200px;
+      border-radius: 50%;
+      padding-bottom: 15px;
+    }
   }
   .three-fourths {
     @include justify-content(flex-start);
@@ -669,7 +903,8 @@ div.wpforms-container-full .wpforms-form input[type=week],
 div.wpforms-container-full .wpforms-form select,
 div.wpforms-container-full .wpforms-form textarea {
   background-color: $white !important;
-  border: 2px solid $gray !important;
+  border: 1px solid $gray !important;
+  border-radius: 0 !important;
 }
 
 // Image Slider
@@ -727,7 +962,7 @@ div.wpforms-container-full .wpforms-form textarea {
     padding: 30px 30px 30px 0;
     .image {
       img {
-        border: 2px solid $gray;
+        border: 1px solid $gray;
         width: calc(100% - 4px);
         height: auto;
       }
@@ -763,7 +998,7 @@ div.wpforms-container-full .wpforms-form textarea {
     .one-half {
       &:first-child {
         .content-container, .image-container {
-          padding: 30px 30px 0px 0;
+          padding: 0px 30px 0px 0;
         }
         .lSSlideOuter {
           padding: 0 30px 0 0;
@@ -771,7 +1006,7 @@ div.wpforms-container-full .wpforms-form textarea {
       }
       &:nth-child(2) {
         .content-container, .image-container {
-          padding: 30px 0px 0px 30px;
+          padding: 0px 0px 0px 30px;
         }
         .lSSlideOuter {
             padding: 0 0 0 30px;
@@ -807,15 +1042,6 @@ div.wpforms-container-full .wpforms-form textarea {
       }
     }
   }
-  .experience {
-    ol {
-      padding-left: 20px;
-      max-width: 700px;
-      li {
-        padding-bottom: 15px;
-      }
-    }
-  }
 }
 
 
@@ -827,14 +1053,31 @@ div.wpforms-container-full .wpforms-form textarea {
   color: $white;
   position: relative;
   width: 100%;
+  a {
+    color: $white;
+    &:hover {
+      color: $red;
+    }
+  }
   .flex-wrapper {
-    padding: 15px 0;
+    padding: 6px 0;
+    @include justify-content(space-between);
+    color: $white;
+    &.logo {
+      @include justify-content(center);
+      img {
+        width: 150px;
+        height: auto;
+      }
+    }
     &.copyright {
+      @include justify-content(center);
       padding-bottom: 0;
       font-size: 0.8em;
     }
-    .row {
+    .row, span {
       width: 100%;
+      color: $white;
     }
   }
 }

@@ -3,7 +3,11 @@
     * Template Name: Contact
     */
 ?>
-<?php get_header(); ?>
+<?php
+  get_header();
+  $page = get_page_by_title('Contact');
+  $image = wp_get_attachment_image_src(get_post_thumbnail_id($page->ID), 'single-post-thumbnail');
+?>
 
 <div className="main-content-wrap">
   <h1> Capabilities Page </h1>
