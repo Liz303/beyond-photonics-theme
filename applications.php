@@ -40,11 +40,11 @@
       <div class="section-content flex-wrapper">
         <?php if($i % 2 == 0) : ?>
             <div class="one-half flex-wrapper">
-              <div class="content-container">
+              <div class="content-container order-two">
                 <?php the_content() ?>
               </div>
             </div>
-            <div class="one-half flex-wrapper">
+            <div class="one-half flex-wrapper order-one">
               <div class="image-container">
                 <?php the_post_thumbnail( ); ?>
               </div>

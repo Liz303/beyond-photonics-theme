@@ -1,62 +1,47 @@
-var Slider = {
-  init: function($, winWidth) {
-    var self = $(this);
+var MobileNavigation = {
+  init: function($) {
+    var self = this;
 
-    self.$arrows = $('.arrows');
-    $('.arrows').on('click', function() {
-      var arrow = $(this);
-      var slider = arrow.parents('.slider-container');
-      var imageContainer = slider.children('.images');
-      var images = imageContainer.children('.slider-item');
-      var numberOfImages = images.length;
-			var sliderWidth = winWidth < 1600 ? winWidth - 60 : 1600 - 60;
-			var visibleImagesInSlider = sliderWidth / ($(images[0]).width() + 15);
-      var left = 0;
-      var leftPos;
-			var firstVisible;
-			var indexOfActive;
+    // Define vars
+    self.$mobileNavButton = $('#mobile-nav .hamburger');
+    self.$mobileNavDrawer = $('#mobile-nav-drawer');
+    self.$mobileNavItems = $('#mobile-nav-drawer .nav-items li');
 
-			if ($(slider).find('.slider-item.first').length === 0) {
-				$(images[0]).addClass('first');
-			}
-			firstVisible = $(slider).find('.slider-item.first');
-			indexOfActive = $(firstVisible).data('key');
-
-
-
-
-      // ARROW LEFT
-      if (arrow.data('key') === 'left' ) {
-        if (indexOfActive === 0) { return;
-        } else { indexOfNew = indexOfActive - 1; }
-
-      // ARROW RIGHT
+    self.$mobileNavButton.on('click', function() {
+      if (self.$mobileNavButton.hasClass('open')) {
+        self.$mobileNavButton.removeClass('open');
+        self.$mobileNavDrawer.removeClass('open');
       } else {
-        if ((indexOfActive + 1) === numberOfImages) { return;
-        } else { indexOfNew = indexOfActive + 1; }
+        self.$mobileNavButton.addClass('open');
+        self.$mobileNavDrawer.addClass('open');
       }
+    });
 
-      if (indexOfNew === 0) { left = 0;
-      } else {
-        for ( var i=0; i < indexOfNew; i ++ ) {
-          left = left + $(images[i]).width() + 15;
-        }
-      }
+    self.$mobileNavItems.on('click', function(e) {
+      e.preventDefault();
+      $(window).off("scroll");
+      self.$navItems.removeClass('active');
+      $(this).addClass('active');
 
-      $(images[indexOfActive]).removeClass('first');
-      $(images[indexOfNew]).addClass('first');
-      leftPos = -left + "px";
-      $(imageContainer).css('left', leftPos);
+      self.$mobileNavButton.removeClass('open');
+      self.$mobileNavDrawer.removeClass('open');
+      var target = $($(this).find('a')).attr("href");
+      var $target = $(target);
+      $('html, body').stop().animate({
+          'scrollTop': $target.offset().top+2
+      }, 500, 'swing', function () {
+          window.location.hash = target;
+          $(window).on("scroll", self.onScroll);
+      });
     });
   }
 };
 
-// jQuery(document).ready(function($) {
-// 	var winWidth = $(window).width();
-//   $("#lightSlider").lightSlider();
-// });
 
 jQuery(document).ready(function($) {
+
+  MobileNavigation.init($);
+
   $('#lightslider').lightSlider({
     cssEasing: 'ease', //'cubic-bezier(0.25, 0, 0.25, 1)',//
     easing: 'linear', //'for jquery animation',////
@@ -91,12 +76,15 @@ jQuery(document).ready(function($) {
     pager: false
   });
 
-  $('#nav .subnav').each(function(){
-    var parentwidth = $(this).parents().eq(0).width()/2;
-    var width = $(this).width()/2;
-    var left = -(width - parentwidth) + 'px';
-    $(this).css('left', left);
-  });
+  if ($(window).width() > 939) {
+    $('#nav .subnav').each(function(){
+      var parentwidth = $(this).parents().eq(0).width()/2;
+      var width = $(this).width()/2;
+      var left = -(width - parentwidth) + 'px';
+      $(this).css('left', left);
+    });
+  }
+
 
   $('.read-more').on('click', function() {
     var content = $(this).siblings('.abbreviated');

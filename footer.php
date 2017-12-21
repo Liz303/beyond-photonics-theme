@@ -1,35 +1,19 @@
 <!-- Footer -->
     <div class="footer">
-      <div class="flex-wrapper">
-          <section class="one-third flex-wrapper justify-start">
-            <?php
-              $contact = array( 'post_type' => 'contacts', );
-              $loop = new WP_Query( $contact );
-               while ( $loop->have_posts() ) : $loop->the_post();
-
-
-            ?>
-            <div class="row flex-wrapper">
-              <a href="mailto:<?php echo get_post_meta( $post->ID, 'email', true ) ?>" target="blank">
-                <?php echo get_post_meta( $post->ID, 'email', true ) ?>
-              </a>
-            </div>
-            <div class="row flex-wrapper">
-              <div><?php echo get_post_meta( $post->ID, 'phone', true )  ?></div>
-            </div>
-
-          </section>
-          <section class="one-third center logo flex-wrapper">
-  						<?php
-  							if ( has_custom_logo() ) {
-                  the_custom_logo();
-  							}  ?>
-          </section>
-          <section class="one-third flex-wrapper justify-end">
-            <a href="<?php echo get_option('linkedin'); ?>" ><i class="fa fa-linkedin"></i></a>
-          </section>
-      </div>
-
+        <section class="flex-wrapper center">
+          <?php
+            $contact = array( 'post_type' => 'contacts', );
+            $loop = new WP_Query( $contact );
+             while ( $loop->have_posts() ) : $loop->the_post();
+          ?>
+          <div class="full"> email:
+            <a href="mailto:<?php echo get_post_meta( $post->ID, 'email', true ) ?>" target="blank">
+              <?php echo get_post_meta( $post->ID, 'email', true ) ?>
+            </a>
+          </div>
+          <div class="full"> phone: <?php echo get_post_meta( $post->ID, 'phone', true )  ?></div>
+          <a href="<?php echo get_option('linkedin'); ?>" class="full"><i class="fa fa-linkedin"></i></a>
+        </section>
 
       <!-- Copyright -->
       <div class="copyright flex-wrapper">

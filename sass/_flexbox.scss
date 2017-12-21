@@ -45,7 +45,7 @@
     flex: 2 1;
     position: relative;
     width: 50%;
-    min-width: 307px;
+    min-width: 370px;
     &.center {
       @include justify-content(center);
       @include align-items(center);

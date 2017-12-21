@@ -169,59 +169,7 @@ get_header();
     </div>
   </section>
 
-
-  <section class="section" id="contact">
-    <div class="section-content flex-wrapper">
-      <div class="one-half">
-        <div class="content-wrap">
-          <h1> Get in Touch </h1>
-          <div class="description">
-            <?php
-              $contact = array( 'post_type' => 'contacts', );
-              $loop = new WP_Query( $contact );
-              ?>
-              <?php while ( $loop->have_posts() ) : $loop->the_post();?>
-                <?php the_excerpt(); ?>
-
-          </div>
-          <h1> Contact Us </h1>
-          <div class="description">
-              <?php
-              $google_address_link = get_post_meta( $post->ID, 'google_map_link', true );
-              if( !empty($google_address_link)) {
-                echo '<a href="' . esc_html( get_post_meta( get_the_ID(), 'google_map_link', true )) . '">';
-              }
-              echo
-              '<span>' .
-                esc_html( get_post_meta( get_the_ID(), 'address_street_1', true ) ) .
-              ', ' .
-                esc_html( get_post_meta( get_the_ID(), 'address_street_2', true ) ) .
-              '</span>
-               <span> ' .
-                 esc_html( get_post_meta( get_the_ID(), 'address_city', true ) ) .
-              ', ' .
-                 esc_html( get_post_meta( get_the_ID(), 'address_state', true ) ) .
-              ' ' .
-                 esc_html( get_post_meta( get_the_ID(), 'address_zip', true ) ) .
-              '</span>';
-              if( !empty($google_address_link)) {
-                 echo '</a>';
-              }
-                 ?>
-            <?php endwhile; ?>
-          </div>
-        </div>
-      </div>
-      <div class="one-half">
-        <div class="content-wrap">
-            <?php while ( $loop->have_posts() ) : $loop->the_post();?>
-              <?php echo the_content(); ?>
-            <?php endwhile; ?>
-        </div>
-      </div>
-    </div>
-  </section>
-
+  <?php get_template_part('contact_section') ?>
 </div>
 
 <?php get_footer(); ?>
