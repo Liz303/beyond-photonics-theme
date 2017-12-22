@@ -10,7 +10,7 @@
 ?>
 
 <div class="main-content-wrap page-container" id="company">
-  <div class="header-image">
+  <div class="<?php echo ( '' == get_post($page)->post_content ) ? 'header-image short' : 'header-image'?>">
     <?php if( '' == get_post($page)->post_content ) : ?>
       <div class="content-container flex-wrapper">
         <h1><?php echo get_the_title($page) ?> </h1>
@@ -25,9 +25,9 @@
     <div class="header-content-container flex-wrapper">
       <h1><?php echo get_the_title($page) ?> </h1>
       <div class="copy-container intro-copy">
-          <?php while ( have_posts() ) : the_post(); ?>
-            <?php echo the_content() ?>
-          <?php endwhile ?>
+        <?php while ( have_posts() ) : the_post(); ?>
+          <?php echo the_content() ?>
+        <?php endwhile ?>
       </div>
     </div>
   <?php endif; ?>

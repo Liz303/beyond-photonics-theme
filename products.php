@@ -25,9 +25,9 @@
     <div class="header-content-container flex-wrapper">
       <h1><?php echo get_the_title($page) ?> </h1>
       <div class="copy-container intro-copy">
-          <?php while ( have_posts() ) : the_post(); ?>
-            <?php echo the_content() ?>
-          <?php endwhile ?>
+        <?php while ( have_posts() ) : the_post(); ?>
+          <?php echo the_content() ?>
+        <?php endwhile ?>
       </div>
     </div>
   <?php endif; ?>
