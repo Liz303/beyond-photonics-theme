@@ -786,11 +786,13 @@ section {
   &#leadership {
     .team-wrapper {
       .one-half {
+        padding-bottom: 30px;
         .content-wrap {
           @include justify-content(space-between);
           a {
             @include align-self(flex-end);
             width: 100%;
+            font-weight: 700;
           }
         }
       }
@@ -815,6 +817,9 @@ section {
       }
       .title {
         font-weight: 600;
+        .position {
+          font-weight: 400;
+        }
       }
     }
   }
@@ -936,11 +941,24 @@ section {
 .page-container {
   #leadership-team, #experience-expertise {
     .leadership-item {
+      .title {
+        h4 {
+          padding-bottom: 5px;
+        }
+        i {
+          padding-top: 5px;
+        }
+      }
       &:last-child {
         padding-bottom: 0;
       }
     }
     .content-container {
+      p {
+        &:first-child {
+          margin-top: 0;
+        }
+      }
       &:last-child {
         padding-bottom: 0;
       }
@@ -1190,13 +1208,15 @@ div.wpforms-container-full .wpforms-form textarea {
 
 // Footer
 .footer {
-  @include justify-content(space-between);
-  padding: 15px 30px 15px 30px;
   background: $gray;
   color: $white;
   position: relative;
-  width: 100%;
   text-align: center;
+  padding: 20px 0;
+  section:
+  span {
+    padding: 15px;
+  }
   a {
     color: $white;
     &:hover {
@@ -1205,7 +1225,6 @@ div.wpforms-container-full .wpforms-form textarea {
   }
   .flex-wrapper {
     padding: 6px 0;
-    @include justify-content(space-between);
     color: $white;
     &.logo {
       @include justify-content(center);
@@ -1222,8 +1241,17 @@ div.wpforms-container-full .wpforms-form textarea {
   }
 }
 
+.show-mobile {
+  display: none;
+}
 // Mobile
 @media only screen and (max-width:800px) {
+  .hide-mobile {
+    display: none;
+  }
+  .show-mobile {
+    display: block;
+  }
   #nav {
     display: none;
   }
@@ -1241,6 +1269,19 @@ div.wpforms-container-full .wpforms-form textarea {
   }
   .page-container .section-content .one-half:nth-child(2) .content-container {
     padding-top: 30px;
+  }
+  .page-container {
+    .flex-wrapper {
+      .one-half {
+        &.order-one {
+          order: 1;
+        }
+        &.order-two {
+          order: 2;
+        }
+      }
+    }
+
   }
 }
 

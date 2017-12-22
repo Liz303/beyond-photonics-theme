@@ -2,16 +2,17 @@
   <div class="section-content flex-wrapper">
     <div class="one-half">
       <div class="content-wrap">
-        <h1> Get in Touch </h1>
-        <div class="description">
-          <?php
-            $contact = array( 'post_type' => 'contacts', );
-            $loop = new WP_Query( $contact );
-            ?>
-            <?php while ( $loop->have_posts() ) : $loop->the_post();?>
-              <?php the_excerpt(); ?>
-
-        </div>
+        <span class="hide-mobile">
+          <h1> Get in Touch </h1>
+          <div class="description">
+            <?php
+              $contact = array( 'post_type' => 'contacts', );
+              $loop = new WP_Query( $contact );
+              ?>
+              <?php while ( $loop->have_posts() ) : $loop->the_post();?>
+                <?php the_excerpt(); ?>
+          </div>
+        </span>
         <h1> Contact Us </h1>
         <div class="description">
             <div class="full">
@@ -42,16 +43,22 @@
              <a href="mailto:<?php echo get_post_meta( $post->ID, 'email', true ) ?>" target="blank">
                <?php echo get_post_meta( $post->ID, 'email', true ) ?>
              </a>
-           </div> 
+           </div>
            <div class="full"><?php echo get_post_meta( $post->ID, 'phone', true )  ?></div>
            <a href="<?php echo get_option('linkedin'); ?>" class="full"><i class="fa fa-linkedin"></i></a>
-          <?php endwhile; ?>
+
         </div>
       </div>
     </div>
     <div class="one-half">
       <div class="content-wrap">
-          <?php while ( $loop->have_posts() ) : $loop->the_post();?>
+        <span class="show-mobile">
+          <h1> Get in Touch </h1>
+          <div class="description">
+              <div class="description">
+                  <?php the_excerpt(); ?>
+              </div>
+            </span>
             <?php echo the_content(); ?>
           <?php endwhile; ?>
       </div>

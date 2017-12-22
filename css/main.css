@@ -162,18 +162,6 @@
   .flex-wrapper .full {
     width: 100%; }
 
-@media only screen and (max-width: 736px) {
-  .flexbox .one-half, .section .one-half {
-    width: 100%;
-    min-width: 200px; }
-  .flexbox .one-third, .section .one-third {
-    width: 100%;
-    margin-bottom: 30px; }
-  .flexbox .one-third-flex, .section .one-third-flex {
-    margin-bottom: 30px; }
-  .flexbox .two-thirds, .section .two-thirds {
-    width: 100%;
-    min-width: 300px; } }
 html, body {
   font-family: Georgia, serif;
   font-size: 17px;
@@ -856,18 +844,21 @@ section {
         margin: 0; }
     section#contact .description span {
       display: block; }
-  section#leadership .team-wrapper .one-half .content-wrap {
-    -webkit-justify-content: space-between;
-    -moz-justify-content: space-between;
-    -ms-justify-content: space-between;
-    justify-content: space-between;
-    -ms-flex-pack: space-between; }
-    section#leadership .team-wrapper .one-half .content-wrap a {
-      -webkit-align-self: flex-end;
-      -moz-align-self: flex-end;
-      -ms-align-self: flex-end;
-      align-self: flex-end;
-      width: 100%; }
+  section#leadership .team-wrapper .one-half {
+    padding-bottom: 30px; }
+    section#leadership .team-wrapper .one-half .content-wrap {
+      -webkit-justify-content: space-between;
+      -moz-justify-content: space-between;
+      -ms-justify-content: space-between;
+      justify-content: space-between;
+      -ms-flex-pack: space-between; }
+      section#leadership .team-wrapper .one-half .content-wrap a {
+        -webkit-align-self: flex-end;
+        -moz-align-self: flex-end;
+        -ms-align-self: flex-end;
+        align-self: flex-end;
+        width: 100%;
+        font-weight: 700; }
   section#leadership .leadership-item {
     display: -webkit-box;
     display: -moz-box;
@@ -900,6 +891,8 @@ section {
         padding-bottom: 15px; }
     section#leadership .leadership-item .title {
       font-weight: 600; }
+      section#leadership .leadership-item .title .position {
+        font-weight: 400; }
   section#contact .content-wrap {
     padding: 30px; }
   section#experience-expertise .section-content:not(.title) {
@@ -974,8 +967,14 @@ section {
     -o-background-size: cover;
     background-size: cover; }
 
+.page-container #leadership-team .leadership-item .title h4, .page-container #experience-expertise .leadership-item .title h4 {
+  padding-bottom: 5px; }
+.page-container #leadership-team .leadership-item .title i, .page-container #experience-expertise .leadership-item .title i {
+  padding-top: 5px; }
 .page-container #leadership-team .leadership-item:last-child, .page-container #experience-expertise .leadership-item:last-child {
   padding-bottom: 0; }
+.page-container #leadership-team .content-container p:first-child, .page-container #experience-expertise .content-container p:first-child {
+  margin-top: 0; }
 .page-container #leadership-team .content-container:last-child, .page-container #experience-expertise .content-container:last-child {
   padding-bottom: 0; }
 .page-container #leadership-team .read-more:last-child, .page-container #experience-expertise .read-more:last-child {
@@ -1157,28 +1156,19 @@ div.wpforms-container-full .wpforms-form textarea {
       max-width: calc(100% - 30px); }
 
 .footer {
-  -webkit-justify-content: space-between;
-  -moz-justify-content: space-between;
-  -ms-justify-content: space-between;
-  justify-content: space-between;
-  -ms-flex-pack: space-between;
-  padding: 15px 30px 15px 30px;
   background: #404041;
   color: #ece8e8;
   position: relative;
-  width: 100%;
-  text-align: center; }
+  text-align: center;
+  padding: 20px 0;
+  section: span;
+    section-padding: 15px; }
   .footer a {
     color: #ece8e8; }
     .footer a:hover {
       color: #b9231c; }
   .footer .flex-wrapper {
     padding: 6px 0;
-    -webkit-justify-content: space-between;
-    -moz-justify-content: space-between;
-    -ms-justify-content: space-between;
-    justify-content: space-between;
-    -ms-flex-pack: space-between;
     color: #ece8e8; }
     .footer .flex-wrapper.logo {
       -webkit-justify-content: center;
@@ -1198,7 +1188,16 @@ div.wpforms-container-full .wpforms-form textarea {
       padding-bottom: 0;
       font-size: 0.8em; }
 
+.show-mobile {
+  display: none; }
+
 @media only screen and (max-width: 800px) {
+  .hide-mobile {
+    display: none; }
+
+  .show-mobile {
+    display: block; }
+
   #nav {
     display: none; }
 
@@ -1215,7 +1214,12 @@ div.wpforms-container-full .wpforms-form textarea {
     padding: 0 30px; }
 
   .page-container .section-content .one-half:nth-child(2) .content-container {
-    padding-top: 30px; } }
+    padding-top: 30px; }
+
+  .page-container .flex-wrapper .one-half.order-one {
+    order: 1; }
+  .page-container .flex-wrapper .one-half.order-two {
+    order: 2; } }
 @media only screen and (max-width: 530px) {
   .main-content-wrap .header-content-container h1 {
     text-align: center; } }

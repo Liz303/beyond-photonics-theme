@@ -50,12 +50,12 @@
         $posttext = preg_replace($regex, '', $posttext); ?>
       <div class="section-content flex-wrapper">
         <?php if($i % 2 == 0) : ?>
-          <div class="one-half flex-wrapper">
+          <div class="one-half flex-wrapper order-two">
             <div class="content-container">
               <?php echo $posttext; ?>
             </div>
           </div>
-          <div class="one-half flex-wrapper">
+          <div class="one-half flex-wrapper order-one">
             <ul class="page-image-slider">
               <?php foreach ( $images[0] as $image ) {
               echo '<li> <div class="image">' . $image . '</div> </li>'; } ?>

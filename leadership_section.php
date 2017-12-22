@@ -8,7 +8,9 @@
       <!-- Display Title and Author Name -->
       <div class="title">
         <?php the_title(); ?> <br/>
-        <?php echo esc_html( get_post_meta( get_the_ID(), 'position', true ) ); ?>
+        <div class="position">
+          <?php echo esc_html( get_post_meta( get_the_ID(), 'position', true ) ); ?>
+        </div>
       </div>
       <div class="description">
         <?php the_excerpt(); ?>

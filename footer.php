@@ -9,48 +9,59 @@
              $phone = get_post_meta( $post->ID, 'phone', true );
              $linkedin = get_option('linkedin');
           ?>
+          <div>
           <?php if( !empty($email)) { ?>
-              <div class="full"> email:
-                <a href="mailto:<?php echo $email ?>" target="blank">
+              <span>
+                  <a href="mailto:<?php echo $email ?>" target="blank">
                   <?php echo $email ?>
                 </a>
-              </div>
+              </span> |
           <?php } ?>
+
           <?php if( !empty($phone)) { ?>
-              <div class="full"> phone: <?php echo get_post_meta( $post->ID, 'phone', true )  ?></div>
+              <span> <?php echo get_post_meta( $post->ID, 'phone', true )  ?> </span>
+              <?php
+                $google_address_link = get_post_meta( $post->ID, 'google_map_link', true );
+                $address_street_1 = esc_html( get_post_meta( get_the_ID(), 'address_street_1', true ) );
+                $address_street_2 = esc_html( get_post_meta( get_the_ID(), 'address_street_2', true ) );
+                $city = esc_html( get_post_meta( get_the_ID(), 'address_city', true ) );
+                $add_state = esc_html( get_post_meta( get_the_ID(), 'address_state', true ) );
+                $zip =  esc_html( get_post_meta( get_the_ID(), 'address_zip', true ) );
+                if ( !empty($address_street_1) ||
+                     !empty($address_street_2) ||
+                     !empty($city) ||
+                     !empty($add_state) ||
+                     !empty($zip)) {  echo ' | '; }
+                     ?>
+                <span>
+                <?php
+                if( !empty($google_address_link)) {
+                  echo '<a href="' . esc_html( get_post_meta( get_the_ID(), 'google_map_link', true )) .'">';
+                }
+                if ( !empty($address_street_1)) {  echo $address_street_1 . ' '; }
+                if ( !empty($address_street_2)) { echo ', ' . $address_street_2 . ' ';  }
+                if ( !empty($city) ) { echo $city; }
+                if ( !empty($city) && !empty($add_state) ) { echo ', '; }
+                if ( !empty($add_state)) { echo $add_state . ' '; }
+                if ( !empty($zip)) { echo $zip; }
+                if( !empty($google_address_link)) { echo '</a>'; }
+              ?>
+            </span>
           <?php } ?>
+
+        </div>
+        </section>
+        <section class="flex-wrapper center">
           <?php if ( !empty($linkedin)) { ?>
-              <a href="<?php echo get_option('linkedin'); ?>" class="full"><i class="fa fa-linkedin"></i></a>
+            <span>
+              <a href="<?php echo get_option('linkedin'); ?>"><i class="fa fa-linkedin"></i></a>
+            </span>
           <?php } ?>
         </section>
 
       <!-- Copyright -->
       <div class="copyright flex-wrapper">
-          <div>&copy; Beyond Photonics. All rights reserved.
-            <?php
-              $google_address_link = get_post_meta( $post->ID, 'google_map_link', true );
-              $address_street_1 = esc_html( get_post_meta( get_the_ID(), 'address_street_1', true ) );
-              $address_street_2 = esc_html( get_post_meta( get_the_ID(), 'address_street_2', true ) );
-              $city = esc_html( get_post_meta( get_the_ID(), 'address_city', true ) );
-              $add_state = esc_html( get_post_meta( get_the_ID(), 'address_state', true ) );
-              $zip =  esc_html( get_post_meta( get_the_ID(), 'address_zip', true ) );
-              if ( !empty($address_street_1) ||
-                   !empty($address_street_2) ||
-                   !empty($city) ||
-                   !empty($add_state) ||
-                   !empty($zip)) {  echo ' | '; }
-              if( !empty($google_address_link)) {
-                echo '<a href="' . esc_html( get_post_meta( get_the_ID(), 'google_map_link', true )) .'">';
-              }
-              if ( !empty($address_street_1)) {  echo $address_street_1 . ' '; }
-              if ( !empty($address_street_2)) { echo ', ' . $address_street_2 . ' ';  }
-              if ( !empty($city) ) { echo $city; }
-              if ( !empty($city) && !empty($add_state) ) { echo ', '; }
-              if ( !empty($add_state)) { echo $add_state . ' '; }
-              if ( !empty($zip)) { echo $zip; }
-              if( !empty($google_address_link)) { echo '</a>'; }
-            ?>
-          </div>
+          <div> &copy; Beyond Photonics. All rights reserved. </div>
       </div>
         <?php endwhile; ?>
     </section>

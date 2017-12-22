@@ -101,23 +101,3 @@
     width: 100%;
   }
 }
-
-@media only screen and (max-width: 736px)  {
-  .flexbox, .section {
-    .one-half {
-      width: 100%;
-      min-width: 200px;
-    }
-    .one-third {
-      width: 100%;
-      margin-bottom: 30px;
-    }
-    .one-third-flex {
-      margin-bottom: 30px;
-    }
-    .two-thirds {
-      width: 100%;
-      min-width: 300px;
-    }
-  }
-}

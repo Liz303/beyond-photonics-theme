@@ -64,6 +64,12 @@
               <div class="title">
                 <h4><?php the_title() ?></h4>
                 <?php echo esc_html( get_post_meta( get_the_ID(), 'position', true ) ); ?>
+                <?php
+                  $email = esc_html( get_post_meta( get_the_ID(), 'email', true ) );
+                  if (!empty($email)) {
+                    echo '<div><a href="mailto:' . $email .'"> <i class="fa fa-envelope-o"></i> </a></div>';
+                  }
+                 ?>
               </div>
             </div>
           </div>
@@ -95,7 +101,6 @@
     <div class="section-content title">
       <h2 class="hr-titles"><span>Experience & Expertise</span></h2>
     </div>
-
       <?php
         $experience = array( 'post_type' => 'experience_sections', );
         $experience_loop = new WP_Query( $experience );

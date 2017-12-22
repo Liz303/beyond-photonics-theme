@@ -38,12 +38,12 @@
      </div>
       <div class="section-content flex-wrapper">
         <?php if($i % 2 == 0) : ?>
-            <div class="one-half flex-wrapper">
+            <div class="one-half flex-wrapper order-two">
               <div class="content-container">
                 <?php the_content() ?>
               </div>
             </div>
-            <div class="one-half flex-wrapper">
+            <div class="one-half flex-wrapper order-one">
               <div class="image-container">
                 <?php the_post_thumbnail( ); ?>
               </div>
