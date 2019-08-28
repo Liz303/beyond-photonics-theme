@@ -58,10 +58,24 @@ jQuery(document).ready(function($) {
      cssEasing: 'ease', //'cubic-bezier(0.25, 0, 0.25, 1)',//
      easing: 'linear', //'for jquery animation',////
      item: 1,
-     loop: true,
+     loop: false,
      slideMargin: 15,
      keyPress: true,
-     controls: true
+     controls: true,
+     onSliderLoad: function (el) {
+
+        var maxHeight = 0,
+            container = $(el),
+            children = container.children();
+
+        children.each(function () {
+            var childHeight = $(this).height();
+            if (childHeight > maxHeight) {
+                maxHeight = childHeight;
+            }
+        });
+        container.height(maxHeight);
+    }
   });
 
   $('.news-slider').lightSlider({

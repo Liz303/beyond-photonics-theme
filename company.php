@@ -10,27 +10,25 @@
 ?>
 
 <div class="main-content-wrap page-container" id="company">
-  <div class="<?php echo ( '' == get_post($page)->post_content ) ? 'header-image short' : 'header-image'?>">
-    <?php if( '' == get_post($page)->post_content ) : ?>
-      <div class="content-container flex-wrapper">
-        <h1><?php echo get_the_title($page) ?> </h1>
-      </div>
-    <?php endif ?>
+  <div class="header-image">
+    <div class="content-container page-container flex-wrapper">
+      <h1><?php echo get_the_title($page) ?> </h1>
+    </div>
     <div class="image-overlay"></div>
-    <div class="image"
+    <div class="image hide-print"
          style="background-image: url('<?php echo $image[0] ?>')">
     </div>
-  </div>
-  <?php if( '' !== get_post($page)->post_content ) : ?>
-    <div class="header-content-container flex-wrapper">
-      <h1><?php echo get_the_title($page) ?> </h1>
-      <div class="copy-container intro-copy">
-        <?php while ( have_posts() ) : the_post(); ?>
-          <?php echo the_content() ?>
-        <?php endwhile ?>
-      </div>
+    <div class="image show-print">
+      <img src="<?php echo $image[0] ?>"/>
     </div>
-  <?php endif; ?>
+  </div>
+  <section class="flex-wrapper">
+    <div class="copy-container intro-copy">
+      <?php while ( have_posts() ) : the_post(); ?>
+        <?php echo the_content() ?>
+      <?php endwhile ?>
+    </div>
+  </section>
   <section class="buttons flex-wrapper">
     <div class="one-half flex-wrapper">
       <a href="/tools-facilities" class="content-container">
@@ -53,9 +51,9 @@
     $loop = new WP_Query( $team );
     while ( $loop->have_posts() ) : $loop->the_post();?>
       <?php if (get_the_title() == 'Intro') { ?>
-          <div class="section-content leadership-item flex-wrapper" id="<?php echo urlencode(get_the_title()) ?>">
-            <?php the_content() ?>
-          </div>
+        <div class="section-content leadership-item flex-wrapper" id="<?php echo urlencode(get_the_title()) ?>">
+          <?php the_content() ?>
+        </div>
       <?php } else { ?>
       <div class="section-content leadership-item flex-wrapper" id="<?php echo urlencode(get_the_title()) ?>">
           <div class="full flex-wrapper">
@@ -64,12 +62,6 @@
               <div class="title">
                 <h4><?php the_title() ?></h4>
                 <?php echo esc_html( get_post_meta( get_the_ID(), 'position', true ) ); ?>
-                <?php
-                  $email = esc_html( get_post_meta( get_the_ID(), 'email', true ) );
-                  if (!empty($email)) {
-                    echo '<div><a href="mailto:' . $email .'"> <i class="fa fa-envelope-o"></i> </a></div>';
-                  }
-                 ?>
               </div>
             </div>
           </div>
@@ -93,9 +85,8 @@
           </div>
       </div>
     <?php } ?>
-  <?php endwhile; ?>
-  </div>
-</section>
+    <?php endwhile; ?>
+  </section>
 
   <section class="team-title" id="experience-expertise">
     <div class="section-content title">
@@ -133,7 +124,7 @@
             </div>
           </div>
         <?php } endwhile ?>
-    </section>
+  </section>
     <?php
     $news = new WP_Query(array('category_name' => 'news', ));
     if ( $news->have_posts() ) : ?>
@@ -144,6 +135,5 @@
           <?php include( locate_template( 'news_slider.php', false, false ) ); ?>
       </section>
     <?php endif; ?>
+    <?php get_footer(); ?>
 </div>
-
-<?php get_footer(); ?>

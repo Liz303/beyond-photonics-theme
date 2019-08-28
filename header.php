@@ -19,26 +19,29 @@
 	<body>
 		<div id="page-wrapper">
 			<div class="header flex-wrapper">
-				<div id="logo">
-          <a href="<?php echo get_bloginfo( 'wpurl' );?>">
-						<?php
-							if ( has_custom_logo() ) {
-								the_custom_logo();
-							} else {
-								?> <span> Logo Here </span>
-						<?php } ?>
+				<div class="header-container flex-wrapper">
+					<div id="logo">
+	          <a href="<?php echo get_bloginfo( 'wpurl' );?>">
+							<?php
+								if ( has_custom_logo() ) {
+									the_custom_logo();
+								} else {
+									?> <span> Logo Here </span>
+							<?php } ?>
 
-           </a>
-         </div>
-					<nav id="nav" class="flex-wrapper">
-						<?php get_template_part('navigation') ?>
-					</nav>
-					<div id="mobile-nav" class="flex-wrapper">
-						<div class="hamburger">
-							<span></span>
-							<span></span>
-							<span></span>
-							<span></span>
+	           </a>
+	         </div>
+						<nav id="nav" class="flex-wrapper">
+							<?php get_template_part('navigation') ?>
+						</nav>
+
+						<div id="mobile-nav" class="flex-wrapper">
+							<div class="hamburger">
+								<span></span>
+								<span></span>
+								<span></span>
+								<span></span>
+							</div>
 						</div>
 					</div>
 				</div>

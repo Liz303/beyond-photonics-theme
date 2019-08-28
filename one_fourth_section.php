@@ -6,7 +6,12 @@
         <?php
         $image = get_the_post_thumbnail_url($post->ID, 'full');
         ?>
-        <div class="image" style="background-image: url('<?php echo $image; ?>')"></div>
+        <div class="image hide-print" style="background-image: url('<?php echo $image; ?>')"></div>
+        <div class="show-print">
+          <div class="image">
+            <img src="<?php echo $image; ?>"/>
+          </div>
+        </div>
       </div>
       <div class="caption"> <?php the_title(); ?> </div>
     </div>

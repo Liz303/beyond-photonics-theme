@@ -7,7 +7,7 @@ get_header();
 
 <div class="main-content-wrap" id="homepage">
   <div class="header-image">
-    <div class="content-container page-content flex-wrapper">
+    <div class="content-container page-content flex-wrapper hide-print">
       <h1>
         <?php echo get_theme_mod(
           'homepage_header_title',
@@ -17,12 +17,26 @@ get_header();
       <div class="copy-container">
         <p><?php echo get_theme_mod( 'homepage_header_copy'); ?></p>
       </div>
-      <a href="#"><button class="btn-transparent"> Learn More </button></a>
     </div>
     <div class="image-overlay"></div>
-    <div class="image"
+    <div class="image hide-print"
          style="background-image: url('<?php echo get_theme_mod( 'homepage_header_image') ?>')">
     </div>
+    <div class="show-print">
+      <div class="image">
+        <img src="<?php echo get_theme_mod( 'homepage_header_image') ?>"/>
+      </div>
+    </div>
+
+  </div>
+  <div class="show-print">
+    <h1>
+      <?php echo get_theme_mod(
+        'homepage_header_title',
+        'Basic Principles, Infinite Possibilities' );
+      ?>
+    </h1>
+    <p><?php echo get_theme_mod( 'homepage_header_copy'); ?></p>
   </div>
   <?php
     $news = new WP_Query(array('category_name' => 'news', ));
@@ -116,15 +130,18 @@ get_header();
     <div class="section-content">
       <h2 class="hr-titles"><span>Tools & Facilities</span></h2>
       <div class="flex-wrapper tools-content">
-        <div class="one-half flex-wrapper">
+        <div class="one-half flex-wrapper order-two">
           <div class="intro-copy">
-            <?php echo get_theme_mod( 'homepage_capabilities_intro_copy'); ?>
+            <?php echo get_theme_mod( 'homepage_tools_and_facilities_intro_copy'); ?>
           </div>
           <a href="/tools-facilities">
             <button class="btn-red"> Learn More About Our Tools & Facilities</button>
           </a>
         </div>
-        <div class="image one-half" style="background-image: url('<?php echo get_theme_mod( 'tools_and_facilities_image') ?>')">
+        <div class="image one-half order-one hide-print" style="background-image: url('<?php echo get_theme_mod( 'tools_and_facilities_image') ?>')">
+        </div>
+        <div class="image one-half order-one show-print">
+          <img src="<?php echo get_theme_mod( 'tools_and_facilities_image') ?>"/>
         </div>
       </div>
     </div>
@@ -170,6 +187,5 @@ get_header();
   </section>
 
   <?php get_template_part('contact_section') ?>
+  <?php get_footer(); ?>
 </div>
-
-<?php get_footer(); ?>

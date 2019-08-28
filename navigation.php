@@ -66,7 +66,7 @@
 										</a>
 									</li>
 									<li>
-										<a href="/<?php echo get_page_uri($page) ?>#leadership">
+										<a href="/<?php echo get_page_uri($page) ?>#leadership-team">
 											Leadership Team
 										</a>
 									</li>

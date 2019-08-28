@@ -49,6 +49,7 @@
     add_menu_page( 'Custom Settings', 'Custom Settings', 'manage_options', 'custom-settings', 'custom_settings_page', null, 99 );
   }
   add_action( 'admin_menu', 'custom_settings_add_menu' );
+  add_theme_support( 'post-thumbnails' );
 
   // Create Custom Global Settings
   function custom_settings_page() { ?>
@@ -154,7 +155,7 @@
     $wp_customize->add_control( 'homepage_section_one_intro_copy_control', array(
       'type' => 'textarea',
       'section' => 'beyondphotonics_homepage_options', // // Add a default or your own section
-      'label' => __( 'Add intro copy for section one', 'beyondphotonics' ),
+      'label' => __( 'Add intro copy for Applications Section', 'beyondphotonics' ),
       'priority' => 50,
       'settings' => 'homepage_section_one_intro_copy'
     ));
@@ -203,49 +204,6 @@
     		'settings' => 'tools_and_facilities_image',
     		'priority' => 90,
     	)
-    ));
-
-
-    // HOMEPAGE Swift Intro Copy
-    $wp_customize->add_setting( 'homepage_swift_intro_copy', array(
-      'capability' => 'edit_theme_options',
-      'default' => 'Lorem Ipsum Dolor Sit amet',
-      'sanitize_callback' => 'sanitize_text_field',
-    ) );
-    $wp_customize->add_control( 'homepage_swift_intro_copy_control', array(
-      'type' => 'textarea',
-      'section' => 'beyondphotonics_homepage_options', // // Add a default or your own section
-      'label' => __( 'Add intro copy for Swift', 'beyondphotonics' ),
-      'priority' => 100,
-      'settings' => 'homepage_swift_intro_copy'
-    ));
-
-    // HOMEPAGE Cool Card Intro Copy
-    $wp_customize->add_setting( 'homepage_cool_card_intro_copy', array(
-      'capability' => 'edit_theme_options',
-      'default' => 'Lorem Ipsum Dolor Sit amet',
-      'sanitize_callback' => 'sanitize_text_field',
-    ) );
-    $wp_customize->add_control( 'homepage_cool_card_intro_copy_control', array(
-      'type' => 'textarea',
-      'section' => 'beyondphotonics_homepage_options', // // Add a default or your own section
-      'label' => __( 'Add intro copy for Cool Card', 'beyondphotonics' ),
-      'priority' => 110,
-      'settings' => 'homepage_cool_card_intro_copy'
-    ));
-
-    // HOMEPAGE Leadership Intro Copy
-    $wp_customize->add_setting( 'homepage_leadership_intro_copy', array(
-      'capability' => 'edit_theme_options',
-      'default' => 'Lorem Ipsum Dolor Sit amet',
-      'sanitize_callback' => 'sanitize_text_field',
-    ) );
-    $wp_customize->add_control( 'homepage_leadership_intro_copy_control', array(
-      'type' => 'textarea',
-      'section' => 'beyondphotonics_homepage_options', // // Add a default or your own section
-      'label' => __( 'Add intro copy for Leadership Section', 'beyondphotonics' ),
-      'priority' => 110,
-      'settings' => 'homepage_leadership_intro_copy'
     ));
 
   }

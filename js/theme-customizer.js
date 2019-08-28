@@ -45,22 +45,4 @@
 			 } );
 		} );
 
-		wp.customize( 'homepage_swift_intro_copy', function( value ) {
-			 value.bind( function( newval ) {
-					$('#products').find('.description.swift').html(newval);
-			 } );
-		} );
-
-		wp.customize( 'homepage_cool_card_intro_copy', function( value ) {
-			 value.bind( function( newval ) {
-					$('#products').find('.description.cool-card').html(newval);
-			 } );
-		} );
-
-		wp.customize( 'homepage_leadership_intro_copy', function( value ) {
-			 value.bind( function( newval ) {
-					$('#leadership').find('.intro-copy').html(newval);
-			 } );
-		} );
-
   } )( jQuery );

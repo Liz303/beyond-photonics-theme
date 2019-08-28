@@ -2,22 +2,25 @@
   <div class="section-content flex-wrapper">
     <div class="one-half">
       <div class="content-wrap">
-        <span class="hide-mobile">
-          <h1> Get in Touch </h1>
-          <div class="description">
-            <?php
-              $contact = array( 'post_type' => 'contacts', );
-              $loop = new WP_Query( $contact );
-              ?>
-              <?php while ( $loop->have_posts() ) : $loop->the_post();?>
-                <?php the_excerpt(); ?>
-          </div>
-        </span>
+        <h1> Get in Touch </h1>
+        <div class="description">
+          <?php
+            $contact = array( 'post_type' => 'contacts', );
+            $loop = new WP_Query( $contact );
+            ?>
+            <?php while ( $loop->have_posts() ) : $loop->the_post();?>
+              <?php the_excerpt(); ?>
+        </div>
         <h1> Contact Us </h1>
         <div class="description">
             <div class="full">
             <?php
             $google_address_link = get_post_meta( $post->ID, 'google_map_link', true );
+            $formatted_address = urlencode(esc_html( get_post_meta( get_the_ID(), 'address_street_1', true ) )) . '+' .
+                                 urlencode(esc_html( get_post_meta( get_the_ID(), 'address_street_2', true ) )) . '+' .
+                                 esc_html( get_post_meta( get_the_ID(), 'address_city', true ) ) . ',' .
+                                 esc_html( get_post_meta( get_the_ID(), 'address_state', true ) ) . '+' .
+                                 esc_html( get_post_meta( get_the_ID(), 'address_zip', true ) );
             if( !empty($google_address_link)) {
               echo '<a href="' . esc_html( get_post_meta( get_the_ID(), 'google_map_link', true )) . '">';
             }
@@ -50,18 +53,15 @@
         </div>
       </div>
     </div>
-    <div class="one-half">
-      <div class="content-wrap">
-        <span class="show-mobile">
-          <h1> Get in Touch </h1>
-          <div class="description">
-              <div class="description">
-                  <?php the_excerpt(); ?>
-              </div>
-            </span>
-            <?php echo the_content(); ?>
-          <?php endwhile; ?>
-      </div>
+    <div class="one-half map">
+      <iframe
+        width="100%"
+        height="500"
+        frameborder="0" style="border:0"
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAyqEQbHxUhbaO1LIQNUdwFnVQ5qiRxrgs
+          &q=Beyond+Photonics&zoom=15" allowfullscreen>
+      </iframe>
     </div>
+    <?php endwhile; ?>
   </div>
 </section>

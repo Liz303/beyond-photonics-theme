@@ -10,27 +10,24 @@
 ?>
 
 <div class="main-content-wrap page-container" id="tools-facilities">
-  <div class="<?php echo ( '' == get_post($page)->post_content ) ? 'header-image short' : 'header-image'?>">
-    <?php if( '' == get_post($page)->post_content ) : ?>
-      <div class="content-container flex-wrapper">
+  <div class="header-image">
+      <div class="content-container pageg-container flex-wrapper">
         <h1><?php echo get_the_title($page) ?> </h1>
       </div>
-    <?php endif ?>
     <div class="image-overlay"></div>
-    <div class="image"
+    <div class="image hide-print"
          style="background-image: url('<?php echo $image[0] ?>')">
     </div>
-  </div>
-  <?php if( '' !== get_post($page)->post_content ) : ?>
-    <div class="header-content-container flex-wrapper">
-      <h1><?php echo get_the_title($page) ?> </h1>
-      <div class="copy-container intro-copy">
-        <?php while ( have_posts() ) : the_post(); ?>
-          <?php echo the_content() ?>
-        <?php endwhile ?>
-      </div>
+    <div class="image show-print">
+      <img src="<?php echo $image[0] ?>"/>
     </div>
-  <?php endif; ?>
+  </div>
+  <section class="flex-wrapper">
+    <div class="copy-container intro-copy">
+      <?php while ( have_posts() ) : the_post(); ?>
+        <?php echo the_content() ?>
+      <?php endwhile ?>
+    </div>
+  </section>
+  <?php get_footer(); ?>
 </div>
-
-<?php get_footer(); ?>
