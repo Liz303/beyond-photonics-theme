@@ -1,0 +1,955 @@
+@import "../mixins/flex.scss";
+@import "../vars.scss";
+
+// Containers
+html,
+body,
+#__next,
+#layout {
+  min-height: 100vh;
+}
+
+html,
+body {
+  font-family: $base-font;
+  font-size: 1rem;
+  line-height: 1.35rem;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body {
+  background: $white;
+  margin: 0;
+}
+
+#layout {
+  -moz-transition: background-color 0.5s;
+  -o-transition: background-color 0.5s;
+  -webkit-transition: background-color 0.5s;
+  transition: background-color 0.5s;
+}
+
+#content-container {
+  transition: width 0.5s;
+  position: relative;
+  &.full {
+    width: 100vw;
+  }
+  &.three-fourths {
+    width: 75vw;
+  }
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+#logo {
+  display: block;
+  position: fixed;
+  top: calc(50% - 120px);
+  left: 30px;
+  width: 70%;
+  max-width: 30px;
+  height: 50%;
+  max-height: 204px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  z-index: 100;
+  &:hover {
+    cursor: pointer;
+    .scalingSvg {
+      polygon,
+      path {
+        fill: $green;
+        stroke: $green;
+      }
+    }
+  }
+  @media only screen and (max-width: 500px) {
+    max-width: 20px;
+  }
+}
+.scalingSvg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.section {
+  position: relative;
+  display: inline-block;
+  padding: 60px 0;
+  z-index: 1;
+  @include flexbox;
+  @include flex-flow(wrap);
+  &.bottom {
+    position: absolute;
+    left: 30px;
+    right: 30px;
+    bottom: -100px;
+    .relative-wrapper {
+      position: relative;
+      width: 100%;
+      padding: 0 90px 30px 30px;
+      .previous-project,
+      .next-project {
+        position: absolute;
+        bottom: 0;
+      }
+      .previous-project {
+        left: 0;
+        transition: left 0.5s;
+        &:hover {
+          left: -10px;
+          color: $black;
+        }
+      }
+      .next-project {
+        right: 0;
+        transition: right 0.5s;
+        &:hover {
+          right: -10px;
+          color: $black;
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 500px) {
+    padding: 30px 0;
+  }
+}
+
+.map-section {
+  padding: 30px 30px 90px 120px;
+  max-width: 1200px;
+}
+
+.row {
+  padding: 0 30px 0 120px;
+  max-width: 1200px;
+  @include flexbox;
+  @include justify-content(center);
+  @include align-items(center);
+  @include flex-flow(row);
+  @include flex-wrap(wrap);
+  @media only screen and (max-width: 500px) {
+    padding: 0 30px 0 90px;
+  }
+  &.no-padding {
+    padding: 0;
+  }
+  &.full,
+  .full {
+    width: 100%;
+    flex: 0 100%;
+  }
+  &.one-half {
+    width: 50%;
+    @media only screen and (max-width: 500px) {
+      width: 100%;
+    }
+  }
+  &.one-third {
+    width: 33.33%;
+  }
+  &.two-thirds,
+  .two-thirds {
+    width: 66.66%;
+  }
+  &.two-fifths {
+    width: 40%;
+  }
+  &.one-fifth {
+    width: 20%;
+  }
+}
+
+.columns {
+  padding: 0 30px 0 120px;
+  max-width: 1200px;
+  @include flexbox;
+  @include flex-direction(column);
+  @include flex-flow(row wrap);
+  @include justify-content(space-between);
+  @media only screen and (max-width: 500px) {
+    padding: 0 30px 0 60px;
+  }
+  .one-half {
+    width: 50%;
+    min-width: 250px;
+    flex: 1;
+    padding: 0 30px;
+    @media only screen and (max-width: 500px) {
+      padding: 30px;
+      flex: none;
+      &:first-child {
+        padding-top: 0;
+      }
+    }
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+    @media only screen and (max-width: 650px) {
+      &.order-one {
+        order: 1;
+      }
+      &.order-two {
+        order: 2;
+      }
+    }
+  }
+  .one-third {
+    width: 33.33%;
+    @media only screen and (max-width: 750px) {
+      flex: 1 33.33%;
+    }
+  }
+  .two-thirds {
+    width: 66.66%;
+  }
+  .column-right {
+    @include flexbox;
+    @include flex-flow(wrap);
+    @include justify-content(flex-end);
+  }
+}
+
+.flex-end {
+  @include justify-content(flex-end);
+  @include align-items(flex-end);
+  @include align-content(flex-end);
+}
+.flex-start {
+  @include justify-content(flex-start);
+  @include align-items(flex-start);
+  @include align-content(flex-start);
+}
+
+.flex-wrap {
+  @include flex-flow(wrap);
+}
+
+.space-between {
+  @include justify-content(space-between);
+}
+
+.image-column {
+  img {
+    margin-top: 30px;
+  }
+}
+
+.image-wrap {
+  display: block;
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+.padding-top {
+  padding-top: 60px;
+}
+
+.bg-black {
+  background-color: $black;
+}
+
+.bg-white {
+  background-color: $white;
+}
+
+.svg-background {
+  position: absolute;
+  z-index: 0;
+  margin: 0;
+  width: 100%;
+  svg {
+    width: 100%;
+    height: auto;
+  }
+}
+
+// Text
+h1 {
+  font-family: $head-font;
+  font-size: 2.75rem;
+  line-height: 3.5rem;
+  color: $white;
+  @media only screen and (max-width: 500px) {
+    font-size: 2.3rem;
+    line-height: 2.75rem;
+  }
+}
+h2 {
+  font-family: $base-font;
+  font-size: 2.25rem;
+  font-weight: normal;
+  line-height: 2.75rem;
+  color: $white;
+  @media only screen and (max-width: 500px) {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+p {
+  padding: 5px 0 10px 0;
+  color: $white;
+  line-height: 1.5em;
+}
+
+.bg-white h1,
+.bg-white h2,
+.bg-white p,
+.bg-white a {
+  color: $black;
+}
+
+.bg-white .news-detail a p {
+  &:hover {
+    color: $green;
+  }
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  &.project-list {
+    li {
+      padding: 20px 0;
+      display: inline-block;
+      width: 50px;
+      min-width: 200px;
+    }
+  }
+}
+
+.text-white {
+  color: $white;
+  transition: color 0.5s;
+  &.nav {
+    background: $white-transparent;
+    a.zigzag {
+      background: transparent;
+      color: $white;
+      &:not(.active) {
+        &:after {
+          display: none;
+        }
+        &:hover {
+          &:after {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
+
+.text-black {
+  color: $black;
+  transition: color 0.5s;
+  &.nav {
+    background: $white-semi-transparent;
+    a.zigzag {
+      background: transparent;
+      color: $black;
+      &:not(.active) {
+        &:after {
+          display: none;
+        }
+        &:hover {
+          &:after {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+// Links
+a {
+  text-decoration: none;
+  color: $black;
+  transition: color 0.5s;
+  svg line,
+  polyline {
+    transition: stroke 0.5s;
+  }
+  &:hover {
+    color: $green;
+    svg {
+      line,
+      polyline {
+        stroke: $green;
+      }
+    }
+  }
+}
+
+.zigzag {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  color: $white;
+  &.hover {
+    &:hover {
+      &:after {
+        background: url("/static/zig.png");
+        background-size: 15px;
+      }
+    }
+  }
+  &:after {
+    content: "";
+    height: 10px;
+    width: 100%;
+    position: absolute;
+    background: url("/static/zig.png");
+    background-size: 15px;
+    top: 25px;
+    bottom: 0px;
+    left: 0;
+    -webkit-animation: zigzagPlay 2s infinite linear;
+    -moz-animation: zigzagPlay 2s infinite linear;
+    -ms-animation: zigzagPlay 2s infinite linear;
+    -o-animation: zigzagPlay 2s infinite linear;
+    animation: zigzagPlay 2s infinite linear;
+    -webkit-animation-play-state: paused;
+    -moz-animation-play-state: paused;
+    -o-animation-play-state: paused;
+    animation-play-state: paused;
+  }
+  &:hover {
+    &:after {
+      -webkit-animation-play-state: running;
+      -moz-animation-play-state: running;
+      -o-animation-play-state: running;
+      animation-play-state: running;
+    }
+  }
+}
+
+.bg-white {
+  .zigzag {
+    color: $black;
+    &.hover {
+      &:hover {
+        &:after {
+          background: url("/static/zig-black.png");
+          background-size: 15px;
+        }
+      }
+    }
+    &:after {
+      background: url("/static/zig-black.png");
+      background-size: 15px;
+    }
+  }
+}
+
+@-webkit-keyframes zigzagPlay {
+  0% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: -96px;
+  }
+}
+
+@-moz-keyframes zigzagPlay {
+  0% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: -96px;
+  }
+}
+
+@-ms-keyframes zigzagPlay {
+  0% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: -96px;
+  }
+}
+
+@-o-keyframes zigzagPlay {
+  0% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: -96px;
+  }
+}
+
+@keyframes zigzagPlay {
+  0% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: -96px;
+  }
+}
+
+// Radio Buttons
+.row {
+  form {
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+form {
+  margin-right: 15px;
+  @media only screen and (max-width: 500px) {
+    width: 100%;
+  }
+}
+.radio label {
+  display: block;
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.white .radio label {
+  color: $white;
+}
+
+/* Hide the browser's default radio button */
+.radio label input {
+  position: absolute;
+  opacity: 0;
+}
+
+/* Create a custom radio button */
+.check {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  height: 12px;
+  width: 12px;
+  border: 1px solid $black;
+  border-radius: 50%;
+  background: $black-transparent;
+}
+
+.white .check {
+  border: 1px solid $white;
+  border-radius: 50%;
+  background: $white-transparent;
+}
+
+/* On mouse-over, add a grey background color */
+.radio label:hover input ~ .check {
+  background: $black-very-transparent;
+}
+
+.white .radio label:hover input ~ .check {
+  background: $white-very-transparent;
+}
+
+/* When the radio button is checked, add a blue background */
+.radio label input:checked ~ .check {
+  // background-color: #2196f3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.check:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio label input:checked ~ .check:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radio label .check:after {
+  top: 1px;
+  left: 1px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: $green;
+}
+
+// Arrows
+.left-arrow {
+  background: url("/static/left-arrow.png");
+}
+
+// SVG
+.fill-white {
+  polygon,
+  path {
+    transition: all 0.5s;
+    fill: $white;
+  }
+}
+
+.fill-black {
+  polygon,
+  path {
+    transition: all 0.5s;
+    fill: $black;
+  }
+}
+
+.stroke-white,
+.bg-black {
+  polygon,
+  path {
+    transition: all 0.5s;
+    stroke: $white;
+  }
+}
+
+.stroke-black,
+.bg-white {
+  polygon,
+  path {
+    transition: all 0.5s;
+    stroke: $black-very-transparent;
+  }
+}
+
+.hr-columns {
+  h2 {
+    margin: 0;
+  }
+  hr {
+    border-top: 2px dashed $black-semi-transparent;
+    color: $white;
+    background-color: $white;
+    height: 4px;
+    width: 80%;
+    margin: 1.5em 0;
+  }
+}
+
+.expandable-text {
+  .container {
+    &.hidden {
+      margin-bottom: -10px;
+    }
+    &.visible {
+      margin-bottom: 10px;
+    }
+  }
+  .expandable {
+    transition: max-height 0.5s;
+    overflow: hidden;
+    padding: 0;
+    display: inline-block;
+    &.hidden {
+      max-height: 0;
+    }
+    &.visible {
+      max-height: 500px;
+    }
+  }
+  .zigzag:hover {
+    cursor: pointer;
+  }
+}
+
+// Projects
+.projects {
+  h1 {
+    margin: 0 60px 0 0;
+  }
+  .project-list {
+    .project-wrapper {
+      display: block;
+      overflow: hidden;
+      margin: 0 30px 0 0;
+      padding-bottom: 20px;
+      @media only screen and (max-width: 500px) {
+        margin: 0 0 0 30px;
+      }
+      h2 {
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .project-image {
+    position: fixed;
+    z-index: 0;
+    width: 30%;
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+    @media only screen and (max-width: 650px) {
+      display: none;
+    }
+  }
+}
+
+// project
+.project {
+  .back {
+    margin: 60px 0 0 30px;
+    transition: all 0.5s;
+    display: block;
+    height: 30px;
+    svg,
+    div {
+      float: left;
+    }
+    svg {
+      width: 70px;
+    }
+    div {
+      line-height: 38px;
+      margin-left: 10px;
+      transition: all 0.5s;
+    }
+    &:hover {
+      margin-left: 25px;
+      cursor: pointer;
+      div {
+        margin-left: 15px;
+      }
+    }
+  }
+  .bottom {
+    svg {
+      margin-bottom: 15px;
+    }
+  }
+  .news-item {
+    border-bottom: 1px solid $black;
+    color: $black;
+    a {
+      text-decoration: none;
+      color: $black;
+    }
+  }
+  .section {
+    &:first-child {
+      padding-top: 100px;
+    }
+  }
+  .image-container {
+    height: 50vh;
+    width: 100%;
+    overflow: hidden;
+    min-height: 300px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  .project-table {
+    ul {
+      margin-top: 0;
+    }
+    li {
+      padding: 15px 0;
+      &:first-child {
+        margin-top: 0;
+        padding-top: 0;
+      }
+      &.social {
+        a {
+          margin-right: 10px;
+          svg path {
+            fill: $black;
+            transition: fill 0.5s;
+          }
+          &:hover {
+            svg path {
+              fill: $green;
+            }
+          }
+        }
+      }
+      &.categories {
+        span {
+          margin-right: 5px;
+          display: inline-block;
+        }
+      }
+      &.awards {
+        .award {
+          display: block;
+          margin-bottom: 10px;
+          &:last-child {
+            margin-bottom: 0px;
+          }
+        }
+      }
+      &.leasing {
+        a {
+          display: block;
+          margin-bottom: 10px;
+        }
+      }
+      p {
+        margin: 5px 0 0 0;
+        padding: 0;
+      }
+      border-bottom: 1px solid $black;
+    }
+  }
+  .next-project {
+    margin-right: 0;
+    transition: margin-right 0.5s;
+  }
+  .previous-project {
+    margin-left: 0;
+    transition: margin-left 0.5s;
+  }
+  .flight-image {
+    margin-top: -140px;
+    margin-left: 150px;
+    @media only screen and (max-width: 500px) {
+      margin-top: 30px;
+      margin-left: 0;
+    }
+  }
+  .additional-images {
+    .one-third {
+      img {
+        margin-top: 170px;
+        margin-left: -70px;
+      }
+    }
+  }
+  @media only screen and (max-width: 500px) {
+    .additional-images {
+      .columns {
+        .two-thirds {
+          width: 90%;
+          flex: none;
+          margin-left: 30px;
+        }
+        .one-third {
+          width: 90%;
+          flex: none;
+          img {
+            margin-top: 30px;
+            margin-left: 30px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// press
+.press {
+  .first-section {
+    padding-top: 200px;
+  }
+}
+
+.projects {
+  .first-section {
+    padding-top: 25vh;
+  }
+}
+
+.first-section {
+  padding-top: 55vh;
+  @media only screen and (max-width: 500px) {
+    padding-top: 25vh;
+  }
+}
+
+.history {
+  .lodo-map {
+    margin-top: -90px;
+    margin-right: 30px;
+  }
+  .rino-map {
+    margin: -200px auto auto -160px;
+  }
+  @media only screen and (max-width: 500px) {
+    .lodo-map {
+      margin-top: -30px;
+      order: 1;
+      img {
+        width: 60%;
+      }
+    }
+    .lodo-text {
+      order: 2;
+      padding-top: 30px;
+    }
+    .gt-text {
+      order: 2;
+    }
+    .gt-map {
+      order: 1;
+      .image-wrap.two-thirds {
+        margin-top: -30px;
+      }
+    }
+    .rino-map {
+      margin: -40px auto 0 auto;
+    }
+    .rino-map-container {
+      order: 1;
+    }
+    .rino-lease {
+      order: 2;
+    }
+  }
+  .rino-map {
+    margin: -30px auto 0 auto;
+  }
+  .rino-text {
+    .one-half {
+      padding: 0 30px;
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .company,
+  .project {
+    .columns.text-columns .one-half {
+      padding: 0 30px;
+    }
+  }
+  .map-section {
+    padding: 30px 30px 60px 60px;
+  }
+  .padding-top {
+    padding-top: 30px;
+  }
+}

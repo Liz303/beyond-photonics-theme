@@ -1524,6 +1524,7 @@ div.wpforms-container-full .wpforms-form textarea {
   .page-container .section-content .one-half:first-child .content-container,
   .page-container .section-content .one-half:first-child .image-container {
     padding: 30px;
+    // max-height: 300px;
     img {
       max-height: 300px;
       height: calc(300px - 4px);

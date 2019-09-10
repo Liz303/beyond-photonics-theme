@@ -1,3 +1,6 @@
+<?php
+ require_once 'config.php';
+?>
 <section class="section" id="contact">
   <div class="section-content flex-wrapper">
     <div class="one-half">
@@ -58,8 +61,7 @@
         width="100%"
         height="500"
         frameborder="0" style="border:0"
-        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAyqEQbHxUhbaO1LIQNUdwFnVQ5qiRxrgs
-          &q=Beyond+Photonics&zoom=15" allowfullscreen>
+        src="https://www.google.com/maps/embed/v1/place?key=<?php echo $googleApiKey; ?>&q=Beyond+Photonics&zoom=15" allowfullscreen>
       </iframe>
     </div>
     <?php endwhile; ?>
