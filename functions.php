@@ -1,13 +1,18 @@
 <?php
   // Add scripts and stylesheets
   function beyondphotonics_scripts() {
+    wp_enqueue_script( 'jquery');
+    wp_enqueue_script( 'jquery-ui-tabs', array('jquery') );
+    wp_enqueue_script( 'flexslider', get_template_directory_uri() . '/js/jquery.flexslider.js', array('jquery') );
     wp_enqueue_style( 'lightslider', get_template_directory_uri() . '/css/lightslider.min.css' );
-    wp_enqueue_style( 'fontawesome', get_template_directory_uri() . '/css/main.css', array('lightslider') );
+    wp_enqueue_style( 'flexslider', get_template_directory_uri() . '/css/flexslider.css' );
+    wp_enqueue_style( 'fontawesome', get_template_directory_uri() . '/css/main.css', array('lightslider', 'flexslider') );
   	wp_enqueue_style( 'main-style', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' );
     wp_enqueue_script( 'lightslider', get_template_directory_uri() . '/js/lightslider.min.js', array( 'jquery'));
-    wp_enqueue_script( 'main', get_template_directory_uri() . '/js/main.js', array( 'lightslider'));
+  
+    wp_enqueue_script( 'main', get_template_directory_uri() . '/js/main.js', array( 'lightslider', 'flexslider'));
 
-    wp_enqueue_script( 'theme-customization', get_template_directory_uri() . '/js/theme-customization.js');
+    // wp_enqueue_script( 'theme-customization', get_template_directory_uri() . '/js/theme-customizer.js');
   }
 
   add_action( 'wp_enqueue_scripts', 'beyondphotonics_scripts' );

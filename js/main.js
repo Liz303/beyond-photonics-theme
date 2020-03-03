@@ -57,30 +57,41 @@ jQuery(document).ready(function($) {
     slideMargin: 15,
     pager: false
   });
-
-  $(".page-image-slider").lightSlider({
-    gallery: false,
-    cssEasing: "ease", //'cubic-bezier(0.25, 0, 0.25, 1)',//
-    easing: "linear", //'for jquery animation',////
-    item: 1,
-    loop: false,
-    slideMargin: 15,
-    keyPress: true,
-    controls: true,
-    onSliderLoad: function(el) {
-      var maxHeight = 0,
-        container = $(el),
-        children = container.children();
-
-      children.each(function() {
-        var childHeight = $(this).height();
-        if (childHeight > maxHeight) {
-          maxHeight = childHeight;
-        }
-      });
-      container.height(maxHeight);
-    }
+  // debugger;
+  $(".flexslider").flexslider({
+    animationLoop: false,
+    slideshow: false,
+    speed: 400,
+    prevText: "", //String: Set the text for the "previous" directionNav item
+    nextText: ""
   });
+  // $(".page-image-slider").lightSlider({
+  //   // adaptiveHeight: true,
+  //   gallery: false,
+  //   cssEasing: "ease", //'cubic-bezier(0.25, 0, 0.25, 1)',//
+  //   easing: "linear", //'for jquery animation',////
+  //   item: 1,
+  //   loop: false,
+  //   slideMargin: 15,
+  //   keyPress: true,
+  //   controls: true,
+  //   onSliderLoad: function(el) {
+  //     var maxHeight = 0,
+  //       container = $(el),
+  //       children = container.children();
+  //
+  //     children.each(function() {
+  //       var childHeight = $(this).height();
+  //       // console.log("height ", $(this).height());
+  //       if (childHeight > maxHeight) {
+  //         maxHeight = childHeight;
+  //       }
+  //     });
+  //
+  //     container.height(maxHeight);
+  //     container.css({ height: `${maxHeight}px` });
+  //   }
+  // });
 
   $(".news-slider").lightSlider({
     cssEasing: "ease", //'cubic-bezier(0.25, 0, 0.25, 1)',//

@@ -6,10 +6,12 @@
         <?php } ?>
     </div>
   <?php } else { ?>
-    <ul class="page-image-slider">
-      <?php foreach ( $images[0] as $image ) {
-      echo '<li> <div class="image">' . $image . '</div> </li>'; } ?>
-    </ul>
+    <div class="flexslider">
+      <ul class="page-image-slider slides">
+        <?php foreach ( $images[0] as $image ) {
+        echo '<li> <div class="image">' . $image . '</div> </li>'; } ?>
+      </ul>
+    </div>
 <?php  }
   ?>
 

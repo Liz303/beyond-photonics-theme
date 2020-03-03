@@ -11,7 +11,7 @@
 
 <div class="main-content-wrap page-container" id="capabilities">
   <div class="header-image">
-      <div class="content-container pageg-container flex-wrapper">
+      <div class="content-container page-container flex-wrapper">
         <h1><?php echo get_the_title($page) ?> </h1>
       </div>
     <div class="image-overlay"></div>

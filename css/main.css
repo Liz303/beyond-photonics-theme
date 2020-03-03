@@ -177,6 +177,11 @@ body {
   background: white;
   overflow-x: hidden;
   -webkit-print-color-adjust: exact; }
+  @media print {
+    html,
+    body {
+      size: 5.5in 8.5in;
+      margin: 70pt 20pt 70pt; } }
 
 /*
  * Remove text-shadow in selection highlight:
@@ -718,6 +723,11 @@ section {
   section .section-content {
     max-width: 1100px;
     margin: 0 auto; }
+    @media print {
+      section .section-content {
+        page-break-before: avoid;
+        width: 100%;
+        height: 100%; } }
     section .section-content.centered-content {
       max-width: 1000px; }
       section .section-content.centered-content h4 {
@@ -1600,5 +1610,23 @@ div.wpforms-container-full .wpforms-form textarea {
 @media only screen and (max-width: 360px) {
   #mobile-nav-drawer {
     padding: 0 15px 60px 15px; } }
+/* Flexslider  */
+.flex-direction-nav li {
+  padding: 0; }
+  .flex-direction-nav li a {
+    top: 45%; }
+    .flex-direction-nav li a:before {
+      background: none;
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: 40px;
+      color: #000;
+      font-weight: 600;
+      transition: color 1s linear;
+      content: "\f104"; }
+    .flex-direction-nav li a.flex-next:before {
+      content: "\f105"; }
+
+.flex-control-paging li a.flex-active {
+  background: #b9231c; }
 
 /*# sourceMappingURL=main.css.map */
