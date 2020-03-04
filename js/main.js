@@ -46,6 +46,13 @@ var MobileNavigation = {
 
 jQuery(document).ready(function($) {
   MobileNavigation.init($);
+  if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+    debugger;
+    var fileName = escapeHtml(data.name);
+    window.navigator.msSaveOrOpenBlob(blob, fileName);
+  } else {
+    var blobURL = URL.createObjectURL(blob);
+  }
 
   $("#lightslider").lightSlider({
     cssEasing: "ease", //'cubic-bezier(0.25, 0, 0.25, 1)',//

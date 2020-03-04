@@ -1747,3 +1747,17 @@ div.wpforms-container-full .wpforms-form textarea {
 .flex-control-paging li a.flex-active {
   background: $red;
 }
+
+.download-page-footer {
+  background: $gray;
+  position: fixed;
+  bottom: 0px;
+  height: 62px;
+  width: 100vw;
+  @include flexbox;
+  @include justify-content(center);
+  z-index: 1000;
+  button {
+    background: $white;
+  }
+}

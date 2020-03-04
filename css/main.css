@@ -1629,4 +1629,24 @@ div.wpforms-container-full .wpforms-form textarea {
 .flex-control-paging li a.flex-active {
   background: #b9231c; }
 
+.download-page-footer {
+  background: #404041;
+  position: fixed;
+  bottom: 0px;
+  height: 62px;
+  width: 100vw;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  z-index: 1000; }
+  .download-page-footer button {
+    background: #ece8e8; }
+
 /*# sourceMappingURL=main.css.map */

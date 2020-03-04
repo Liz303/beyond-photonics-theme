@@ -83,5 +83,8 @@
     $i ++;
     endwhile;
   ?>
+  <div class="download-page-footer">
+    <a class="download-pdf" href="<?php echo get_template_directory_uri(); ?>/img/Beyondphotonics_product_opt.pdf" download><button class="btn-red download-page"> Download Page PDF </button></a>
+  </div>
   <?php get_footer(); ?>
 </div>
