@@ -9,7 +9,7 @@
     wp_enqueue_style( 'fontawesome', get_template_directory_uri() . '/css/main.css', array('lightslider', 'flexslider') );
   	wp_enqueue_style( 'main-style', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' );
     wp_enqueue_script( 'lightslider', get_template_directory_uri() . '/js/lightslider.min.js', array( 'jquery'));
-  
+
     wp_enqueue_script( 'main', get_template_directory_uri() . '/js/main.js', array( 'lightslider', 'flexslider'));
 
     // wp_enqueue_script( 'theme-customization', get_template_directory_uri() . '/js/theme-customizer.js');
@@ -31,7 +31,7 @@
   /* Enable support for custom logo */
   add_theme_support('custom-logo', array(
       'width'         => 150,
-      'height'        => auto,
+      'height'        => 'auto',
 			'flex-width'    => true,
 		)
 	);
