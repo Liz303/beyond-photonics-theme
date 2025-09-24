@@ -87,7 +87,6 @@
     <?php } ?>
     <?php endwhile; ?>
   </section>
-
   <section class="team-title" id="experience-expertise">
     <div class="section-content title">
       <h2 class="hr-titles"><span>Experience & Expertise</span></h2>

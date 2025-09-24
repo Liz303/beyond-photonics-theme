@@ -87,6 +87,8 @@
 								</ul>
 							<?php
 								break;
+							case 'Publications':
+								break;	
 							case 'Contact':
 								break;
 

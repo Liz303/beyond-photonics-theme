@@ -230,6 +230,17 @@ h4 {
   margin: 0;
 }
 
+h5 {
+  font-size: 1.2em;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.3em;
+  margin: 10px 0 0 0; 
+}
+.subhead h5 {
+  text-align: center;
+}
+
 p {
   max-width: 1000px;
   line-height: 1.7em;
@@ -923,7 +934,7 @@ section {
       padding: 30px;
     }
   }
-  &#experience-expertise {
+  &#experience-expertise, &#publications {
     .section-content {
       &:not(.title) {
         padding-bottom: 30px;
@@ -1035,7 +1046,7 @@ section {
 
 .page-container {
   #leadership-team,
-  #experience-expertise {
+  #experience-expertise, #publications {
     .leadership-item {
       .title {
         h4 {
@@ -1217,6 +1228,15 @@ div.wpforms-container-full .wpforms-form textarea {
         &:hover {
           border-color: 2px solid $gray;
           color: $gray;
+        }
+      }
+      .download {
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+        a {
+          border-bottom: none;
+          margin: 0 auto;
         }
       }
     }

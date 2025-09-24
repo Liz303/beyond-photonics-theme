@@ -5,6 +5,7 @@
 */
 /* Header */
 #nav > ul > li.current:before {
-  display: none; }
+  display: none;
+}
 
 /*# sourceMappingURL=ie9.css.map */
